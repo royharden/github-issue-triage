@@ -1,0 +1,1408 @@
+{
+  "module": "rulings",
+  "schema_bundle_version": 1,
+  "schemas": {
+    "AppendReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "current_generation_authority": {
+          "const": false,
+          "default": false,
+          "title": "Current Generation Authority",
+          "type": "boolean"
+        },
+        "event_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "historical": {
+          "title": "Historical",
+          "type": "boolean"
+        },
+        "intent_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Intent Sha256",
+          "type": "string"
+        },
+        "outcome": {
+          "enum": [
+            "appended",
+            "exact_retry"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "sequence": {
+          "exclusiveMinimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "event_id",
+        "sequence",
+        "intent_sha256",
+        "outcome",
+        "historical"
+      ],
+      "title": "AppendReceipt",
+      "type": "object"
+    },
+    "PairGeneration": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "pair",
+          "title": "Kind",
+          "type": "string"
+        },
+        "pair_generation": {
+          "pattern": "^pg1:[0-9a-f]{64}$",
+          "title": "Pair Generation",
+          "type": "string"
+        },
+        "profile": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Profile",
+          "type": "string"
+        },
+        "raw_fingerprints": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          ],
+          "title": "Raw Fingerprints",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "profile",
+        "pair_generation",
+        "raw_fingerprints"
+      ],
+      "title": "PairGeneration",
+      "type": "object"
+    },
+    "PairSubject": {
+      "$defs": {
+        "RecordIdentity": {
+          "additionalProperties": false,
+          "properties": {
+            "dataset_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Dataset Id",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Record Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_id",
+            "record_id"
+          ],
+          "title": "RecordIdentity",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "pair",
+          "title": "Kind",
+          "type": "string"
+        },
+        "pair_key": {
+          "pattern": "^pk1:[0-9a-f]{64}$",
+          "title": "Pair Key",
+          "type": "string"
+        },
+        "refs": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/RecordIdentity"
+            },
+            {
+              "$ref": "#/$defs/RecordIdentity"
+            }
+          ],
+          "title": "Refs",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "pair_key",
+        "refs"
+      ],
+      "title": "PairSubject",
+      "type": "object"
+    },
+    "RecordIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "record_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "record_id"
+      ],
+      "title": "RecordIdentity",
+      "type": "object"
+    },
+    "RulingEvent": {
+      "$defs": {
+        "IssueDisposition": {
+          "additionalProperties": false,
+          "properties": {
+            "disposition": {
+              "enum": [
+                "resolved",
+                "waived",
+                "reopened"
+              ],
+              "title": "Disposition",
+              "type": "string"
+            },
+            "issue_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Issue Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "issue_id",
+            "disposition",
+            "reason"
+          ],
+          "title": "IssueDisposition",
+          "type": "object"
+        },
+        "JsonValue": {},
+        "PairDecision": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "decide",
+              "title": "Action",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "verdict": {
+              "enum": [
+                "positive",
+                "negative",
+                "unsure"
+              ],
+              "title": "Verdict",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "verdict"
+          ],
+          "title": "PairDecision",
+          "type": "object"
+        },
+        "PairGeneration": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "pair",
+              "title": "Kind",
+              "type": "string"
+            },
+            "pair_generation": {
+              "pattern": "^pg1:[0-9a-f]{64}$",
+              "title": "Pair Generation",
+              "type": "string"
+            },
+            "profile": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Profile",
+              "type": "string"
+            },
+            "raw_fingerprints": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              ],
+              "title": "Raw Fingerprints",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "profile",
+            "pair_generation",
+            "raw_fingerprints"
+          ],
+          "title": "PairGeneration",
+          "type": "object"
+        },
+        "PairRetraction": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "retract",
+              "title": "Action",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "target_event_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Target Event Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "target_event_id"
+          ],
+          "title": "PairRetraction",
+          "type": "object"
+        },
+        "PairSubject": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "pair",
+              "title": "Kind",
+              "type": "string"
+            },
+            "pair_key": {
+              "pattern": "^pk1:[0-9a-f]{64}$",
+              "title": "Pair Key",
+              "type": "string"
+            },
+            "refs": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/RecordIdentity"
+                },
+                {
+                  "$ref": "#/$defs/RecordIdentity"
+                }
+              ],
+              "title": "Refs",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "pair_key",
+            "refs"
+          ],
+          "title": "PairSubject",
+          "type": "object"
+        },
+        "RecordIdentity": {
+          "additionalProperties": false,
+          "properties": {
+            "dataset_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Dataset Id",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Record Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_id",
+            "record_id"
+          ],
+          "title": "RecordIdentity",
+          "type": "object"
+        },
+        "ScalarGeneration": {
+          "additionalProperties": false,
+          "properties": {
+            "evidence_revision": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Evidence Revision"
+            },
+            "kind": {
+              "const": "scalar",
+              "title": "Kind",
+              "type": "string"
+            },
+            "profile": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Profile",
+              "type": "string"
+            },
+            "raw_source_revision": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Raw Source Revision",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "source_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Source Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "profile",
+            "source_sha256",
+            "raw_source_revision",
+            "evidence_revision"
+          ],
+          "title": "ScalarGeneration",
+          "type": "object"
+        },
+        "ScalarPayload": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "correct",
+                "confirm",
+                "waive_absent",
+                "reopen"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "issue_dispositions": {
+              "items": {
+                "$ref": "#/$defs/IssueDisposition"
+              },
+              "title": "Issue Dispositions",
+              "type": "array"
+            },
+            "new_value": {
+              "$ref": "#/$defs/JsonValue"
+            },
+            "old_value": {
+              "$ref": "#/$defs/JsonValue"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "action",
+            "old_value",
+            "new_value",
+            "issue_dispositions"
+          ],
+          "title": "ScalarPayload",
+          "type": "object"
+        },
+        "ScalarSubject": {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Field Id",
+              "type": "string"
+            },
+            "item_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Item Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "field",
+              "title": "Kind",
+              "type": "string"
+            },
+            "row_key": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Row Key"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "item_id",
+            "field_id"
+          ],
+          "title": "ScalarSubject",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "actor_label": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Actor Label",
+          "type": "string"
+        },
+        "actor_provenance": {
+          "enum": [
+            "human",
+            "agent_provisional"
+          ],
+          "title": "Actor Provenance",
+          "type": "string"
+        },
+        "actor_provenance_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actor Provenance Ref"
+        },
+        "at_utc": {
+          "title": "At Utc",
+          "type": "string"
+        },
+        "context_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Context Refs",
+          "type": "array"
+        },
+        "event_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_kind": {
+          "enum": [
+            "scalar_decision",
+            "pair_decision"
+          ],
+          "title": "Event Kind",
+          "type": "string"
+        },
+        "expected_evidence_revision": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Evidence Revision"
+        },
+        "expected_prior_event_id": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Prior Event Id"
+        },
+        "expected_source_revision": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Expected Source Revision",
+          "type": "string"
+        },
+        "generation_identity": {
+          "discriminator": {
+            "mapping": {
+              "pair": "#/$defs/PairGeneration",
+              "scalar": "#/$defs/ScalarGeneration"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScalarGeneration"
+            },
+            {
+              "$ref": "#/$defs/PairGeneration"
+            }
+          ],
+          "title": "Generation Identity"
+        },
+        "namespace": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Namespace",
+          "type": "string"
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScalarPayload"
+            },
+            {
+              "discriminator": {
+                "mapping": {
+                  "decide": "#/$defs/PairDecision",
+                  "retract": "#/$defs/PairRetraction"
+                },
+                "propertyName": "action"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PairDecision"
+                },
+                {
+                  "$ref": "#/$defs/PairRetraction"
+                }
+              ]
+            }
+          ],
+          "title": "Payload"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "sequence": {
+          "exclusiveMinimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "subject": {
+          "discriminator": {
+            "mapping": {
+              "field": "#/$defs/ScalarSubject",
+              "pair": "#/$defs/PairSubject"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScalarSubject"
+            },
+            {
+              "$ref": "#/$defs/PairSubject"
+            }
+          ],
+          "title": "Subject"
+        }
+      },
+      "required": [
+        "event_id",
+        "namespace",
+        "subject",
+        "generation_identity",
+        "event_kind",
+        "payload",
+        "expected_source_revision",
+        "expected_evidence_revision",
+        "expected_prior_event_id",
+        "actor_label",
+        "actor_provenance",
+        "actor_provenance_ref",
+        "at_utc",
+        "reason",
+        "context_refs",
+        "sequence"
+      ],
+      "title": "RulingEvent",
+      "type": "object"
+    },
+    "RulingIntent": {
+      "$defs": {
+        "IssueDisposition": {
+          "additionalProperties": false,
+          "properties": {
+            "disposition": {
+              "enum": [
+                "resolved",
+                "waived",
+                "reopened"
+              ],
+              "title": "Disposition",
+              "type": "string"
+            },
+            "issue_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Issue Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "issue_id",
+            "disposition",
+            "reason"
+          ],
+          "title": "IssueDisposition",
+          "type": "object"
+        },
+        "JsonValue": {},
+        "PairDecision": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "decide",
+              "title": "Action",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "verdict": {
+              "enum": [
+                "positive",
+                "negative",
+                "unsure"
+              ],
+              "title": "Verdict",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "verdict"
+          ],
+          "title": "PairDecision",
+          "type": "object"
+        },
+        "PairGeneration": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "pair",
+              "title": "Kind",
+              "type": "string"
+            },
+            "pair_generation": {
+              "pattern": "^pg1:[0-9a-f]{64}$",
+              "title": "Pair Generation",
+              "type": "string"
+            },
+            "profile": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Profile",
+              "type": "string"
+            },
+            "raw_fingerprints": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              ],
+              "title": "Raw Fingerprints",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "profile",
+            "pair_generation",
+            "raw_fingerprints"
+          ],
+          "title": "PairGeneration",
+          "type": "object"
+        },
+        "PairRetraction": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "retract",
+              "title": "Action",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "target_event_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Target Event Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "target_event_id"
+          ],
+          "title": "PairRetraction",
+          "type": "object"
+        },
+        "PairSubject": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "pair",
+              "title": "Kind",
+              "type": "string"
+            },
+            "pair_key": {
+              "pattern": "^pk1:[0-9a-f]{64}$",
+              "title": "Pair Key",
+              "type": "string"
+            },
+            "refs": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/RecordIdentity"
+                },
+                {
+                  "$ref": "#/$defs/RecordIdentity"
+                }
+              ],
+              "title": "Refs",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "pair_key",
+            "refs"
+          ],
+          "title": "PairSubject",
+          "type": "object"
+        },
+        "RecordIdentity": {
+          "additionalProperties": false,
+          "properties": {
+            "dataset_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Dataset Id",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Record Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_id",
+            "record_id"
+          ],
+          "title": "RecordIdentity",
+          "type": "object"
+        },
+        "ScalarGeneration": {
+          "additionalProperties": false,
+          "properties": {
+            "evidence_revision": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Evidence Revision"
+            },
+            "kind": {
+              "const": "scalar",
+              "title": "Kind",
+              "type": "string"
+            },
+            "profile": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Profile",
+              "type": "string"
+            },
+            "raw_source_revision": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Raw Source Revision",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "source_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Source Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "profile",
+            "source_sha256",
+            "raw_source_revision",
+            "evidence_revision"
+          ],
+          "title": "ScalarGeneration",
+          "type": "object"
+        },
+        "ScalarPayload": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "correct",
+                "confirm",
+                "waive_absent",
+                "reopen"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "issue_dispositions": {
+              "items": {
+                "$ref": "#/$defs/IssueDisposition"
+              },
+              "title": "Issue Dispositions",
+              "type": "array"
+            },
+            "new_value": {
+              "$ref": "#/$defs/JsonValue"
+            },
+            "old_value": {
+              "$ref": "#/$defs/JsonValue"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "action",
+            "old_value",
+            "new_value",
+            "issue_dispositions"
+          ],
+          "title": "ScalarPayload",
+          "type": "object"
+        },
+        "ScalarSubject": {
+          "additionalProperties": false,
+          "properties": {
+            "field_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Field Id",
+              "type": "string"
+            },
+            "item_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Item Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "field",
+              "title": "Kind",
+              "type": "string"
+            },
+            "row_key": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Row Key"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "item_id",
+            "field_id"
+          ],
+          "title": "ScalarSubject",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "actor_label": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Actor Label",
+          "type": "string"
+        },
+        "actor_provenance": {
+          "enum": [
+            "human",
+            "agent_provisional"
+          ],
+          "title": "Actor Provenance",
+          "type": "string"
+        },
+        "actor_provenance_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actor Provenance Ref"
+        },
+        "at_utc": {
+          "title": "At Utc",
+          "type": "string"
+        },
+        "context_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Context Refs",
+          "type": "array"
+        },
+        "event_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_kind": {
+          "enum": [
+            "scalar_decision",
+            "pair_decision"
+          ],
+          "title": "Event Kind",
+          "type": "string"
+        },
+        "expected_evidence_revision": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Evidence Revision"
+        },
+        "expected_prior_event_id": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Prior Event Id"
+        },
+        "expected_source_revision": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Expected Source Revision",
+          "type": "string"
+        },
+        "generation_identity": {
+          "discriminator": {
+            "mapping": {
+              "pair": "#/$defs/PairGeneration",
+              "scalar": "#/$defs/ScalarGeneration"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScalarGeneration"
+            },
+            {
+              "$ref": "#/$defs/PairGeneration"
+            }
+          ],
+          "title": "Generation Identity"
+        },
+        "namespace": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Namespace",
+          "type": "string"
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScalarPayload"
+            },
+            {
+              "discriminator": {
+                "mapping": {
+                  "decide": "#/$defs/PairDecision",
+                  "retract": "#/$defs/PairRetraction"
+                },
+                "propertyName": "action"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PairDecision"
+                },
+                {
+                  "$ref": "#/$defs/PairRetraction"
+                }
+              ]
+            }
+          ],
+          "title": "Payload"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "subject": {
+          "discriminator": {
+            "mapping": {
+              "field": "#/$defs/ScalarSubject",
+              "pair": "#/$defs/PairSubject"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScalarSubject"
+            },
+            {
+              "$ref": "#/$defs/PairSubject"
+            }
+          ],
+          "title": "Subject"
+        }
+      },
+      "required": [
+        "event_id",
+        "namespace",
+        "subject",
+        "generation_identity",
+        "event_kind",
+        "payload",
+        "expected_source_revision",
+        "expected_evidence_revision",
+        "expected_prior_event_id",
+        "actor_label",
+        "actor_provenance",
+        "actor_provenance_ref",
+        "at_utc",
+        "reason",
+        "context_refs"
+      ],
+      "title": "RulingIntent",
+      "type": "object"
+    },
+    "ScalarGeneration": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_revision": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Evidence Revision"
+        },
+        "kind": {
+          "const": "scalar",
+          "title": "Kind",
+          "type": "string"
+        },
+        "profile": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Profile",
+          "type": "string"
+        },
+        "raw_source_revision": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Raw Source Revision",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "profile",
+        "source_sha256",
+        "raw_source_revision",
+        "evidence_revision"
+      ],
+      "title": "ScalarGeneration",
+      "type": "object"
+    },
+    "ScalarSubject": {
+      "additionalProperties": false,
+      "properties": {
+        "field_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Field Id",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "field",
+          "title": "Kind",
+          "type": "string"
+        },
+        "row_key": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Row Key"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "item_id",
+        "field_id"
+      ],
+      "title": "ScalarSubject",
+      "type": "object"
+    }
+  },
+  "stage": "models-only"
+}

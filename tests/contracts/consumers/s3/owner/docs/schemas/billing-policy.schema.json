@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "fee_context_known": {
+      "title": "Fee Context Known",
+      "type": "boolean"
+    },
+    "policy_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Policy Sha256",
+      "type": "string"
+    },
+    "required_usage_fields": {
+      "items": {
+        "enum": [
+          "input_tokens",
+          "output_tokens",
+          "cache_read_input_tokens",
+          "cache_write_input_tokens",
+          "reasoning_output_tokens"
+        ],
+        "type": "string"
+      },
+      "title": "Required Usage Fields",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_sha256",
+    "required_usage_fields",
+    "fee_context_known"
+  ],
+  "title": "BillingPolicy",
+  "type": "object"
+}

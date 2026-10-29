@@ -1,0 +1,2724 @@
+{
+  "module": "evalkit",
+  "schema_bundle_version": 1,
+  "schemas": {
+    "EvaluationRun": {
+      "$defs": {
+        "ConfusionCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "false_negative": {
+              "minimum": 0,
+              "title": "False Negative",
+              "type": "integer"
+            },
+            "false_positive": {
+              "minimum": 0,
+              "title": "False Positive",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "true_negative": {
+              "minimum": 0,
+              "title": "True Negative",
+              "type": "integer"
+            },
+            "true_positive": {
+              "minimum": 0,
+              "title": "True Positive",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "true_positive",
+            "false_positive",
+            "false_negative",
+            "true_negative"
+          ],
+          "title": "ConfusionCounts",
+          "type": "object"
+        },
+        "Interval": {
+          "additionalProperties": false,
+          "properties": {
+            "draw_ids_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Draw Ids Sha256"
+            },
+            "high": {
+              "title": "High",
+              "type": "number"
+            },
+            "level": {
+              "exclusiveMaximum": 1,
+              "exclusiveMinimum": 0,
+              "title": "Level",
+              "type": "number"
+            },
+            "low": {
+              "title": "Low",
+              "type": "number"
+            },
+            "method": {
+              "enum": [
+                "wilson",
+                "paired_group_percentile"
+              ],
+              "title": "Method",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "valid_draws": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Valid Draws"
+            }
+          },
+          "required": [
+            "method",
+            "low",
+            "high",
+            "level",
+            "valid_draws",
+            "draw_ids_sha256"
+          ],
+          "title": "Interval",
+          "type": "object"
+        },
+        "MetricRow": {
+          "additionalProperties": false,
+          "properties": {
+            "abstention_N": {
+              "minimum": 0,
+              "title": "Abstention N",
+              "type": "integer"
+            },
+            "answered_N": {
+              "minimum": 0,
+              "title": "Answered N",
+              "type": "integer"
+            },
+            "class": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Class"
+            },
+            "comparable_N": {
+              "minimum": 0,
+              "title": "Comparable N",
+              "type": "integer"
+            },
+            "config_ref": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Config Ref",
+              "type": "string"
+            },
+            "confusion_counts": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConfusionCounts"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "corpus_N": {
+              "minimum": 0,
+              "title": "Corpus N",
+              "type": "integer"
+            },
+            "dataset_alias": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Dataset Alias",
+              "type": "string"
+            },
+            "denominator": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Denominator"
+            },
+            "eligible_N": {
+              "minimum": 0,
+              "title": "Eligible N",
+              "type": "integer"
+            },
+            "error_N": {
+              "minimum": 0,
+              "title": "Error N",
+              "type": "integer"
+            },
+            "evidence_origin": {
+              "enum": [
+                "live",
+                "recorded_replay",
+                "synthetic",
+                "agent_provisional",
+                "not_run"
+              ],
+              "title": "Evidence Origin",
+              "type": "string"
+            },
+            "field": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Field"
+            },
+            "interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Interval"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "measurement_status": {
+              "enum": [
+                "measured",
+                "unsupported",
+                "not_measured"
+              ],
+              "title": "Measurement Status",
+              "type": "string"
+            },
+            "method": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Method",
+              "type": "string"
+            },
+            "metric": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Metric",
+              "type": "string"
+            },
+            "null_reason": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Null Reason"
+            },
+            "numerator": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Numerator"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "split": {
+              "enum": [
+                "dev",
+                "heldout"
+              ],
+              "title": "Split",
+              "type": "string"
+            },
+            "stale_N": {
+              "minimum": 0,
+              "title": "Stale N",
+              "type": "integer"
+            },
+            "statistic_version": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Statistic Version",
+              "type": "string"
+            },
+            "supports": {
+              "additionalProperties": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "title": "Supports",
+              "type": "object"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Value"
+            }
+          },
+          "required": [
+            "dataset_alias",
+            "split",
+            "method",
+            "config_ref",
+            "field",
+            "class",
+            "metric",
+            "statistic_version",
+            "measurement_status",
+            "numerator",
+            "denominator",
+            "confusion_counts",
+            "supports",
+            "corpus_N",
+            "eligible_N",
+            "answered_N",
+            "comparable_N",
+            "error_N",
+            "abstention_N",
+            "stale_N",
+            "value",
+            "null_reason",
+            "interval",
+            "evidence_origin"
+          ],
+          "title": "MetricRow",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidate_commit": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Candidate Commit",
+          "type": "string"
+        },
+        "manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Manifest Sha256",
+          "type": "string"
+        },
+        "method_config_refs": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "propertyNames": {
+            "maxLength": 512,
+            "minLength": 1
+          },
+          "title": "Method Config Refs",
+          "type": "object"
+        },
+        "metric_rows": {
+          "items": {
+            "$ref": "#/$defs/MetricRow"
+          },
+          "title": "Metric Rows",
+          "type": "array"
+        },
+        "parent_run_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Run Ref"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "private_outcomes_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Private Outcomes Ref"
+        },
+        "requested_item_ids": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Requested Item Ids",
+          "type": "array"
+        },
+        "rerun_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rerun Reason"
+        },
+        "run_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "split": {
+          "enum": [
+            "dev",
+            "heldout"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "measured",
+            "not_measured",
+            "incomplete"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "manifest_sha256",
+        "candidate_commit",
+        "split",
+        "policy_sha256",
+        "method_config_refs",
+        "requested_item_ids",
+        "status",
+        "private_outcomes_ref",
+        "metric_rows",
+        "rerun_reason",
+        "parent_run_ref"
+      ],
+      "title": "EvaluationRun",
+      "type": "object"
+    },
+    "FieldLabel": {
+      "$defs": {
+        "JsonValue": {}
+      },
+      "additionalProperties": false,
+      "properties": {
+        "presence": {
+          "enum": [
+            "present",
+            "absent",
+            "unlabelled"
+          ],
+          "title": "Presence",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "value": {
+          "$ref": "#/$defs/JsonValue"
+        }
+      },
+      "required": [
+        "presence",
+        "value"
+      ],
+      "title": "FieldLabel",
+      "type": "object"
+    },
+    "GoldRecord": {
+      "$defs": {
+        "DomainLabels": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "domain_labels",
+              "title": "Kind",
+              "type": "string"
+            },
+            "payload": {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "title": "Payload",
+              "type": "object"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "payload"
+          ],
+          "title": "DomainLabels",
+          "type": "object"
+        },
+        "FieldLabel": {
+          "additionalProperties": false,
+          "properties": {
+            "presence": {
+              "enum": [
+                "present",
+                "absent",
+                "unlabelled"
+              ],
+              "title": "Presence",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "#/$defs/JsonValue"
+            }
+          },
+          "required": [
+            "presence",
+            "value"
+          ],
+          "title": "FieldLabel",
+          "type": "object"
+        },
+        "FieldLabels": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "field_labels",
+              "title": "Kind",
+              "type": "string"
+            },
+            "labels": {
+              "additionalProperties": {
+                "$ref": "#/$defs/FieldLabel"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "title": "Labels",
+              "type": "object"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "labels"
+          ],
+          "title": "FieldLabels",
+          "type": "object"
+        },
+        "JsonValue": {},
+        "SourceRef": {
+          "additionalProperties": false,
+          "properties": {
+            "handle": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Handle",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            }
+          },
+          "required": [
+            "handle",
+            "sha256"
+          ],
+          "title": "SourceRef",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "dataset": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Dataset",
+          "type": "string"
+        },
+        "domain_kind": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Domain Kind",
+          "type": "string"
+        },
+        "group_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Group Id",
+          "type": "string"
+        },
+        "input_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Input Sha256",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "label_payload": {
+          "discriminator": {
+            "mapping": {
+              "domain_labels": "#/$defs/DomainLabels",
+              "field_labels": "#/$defs/FieldLabels"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FieldLabels"
+            },
+            {
+              "$ref": "#/$defs/DomainLabels"
+            }
+          ],
+          "title": "Label Payload"
+        },
+        "label_provenance_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Label Provenance Ref"
+        },
+        "label_source": {
+          "enum": [
+            "human",
+            "human_corrected",
+            "agent_provisional",
+            "synthetic"
+          ],
+          "title": "Label Source",
+          "type": "string"
+        },
+        "label_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Label Version",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_ref": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "split": {
+          "enum": [
+            "dev",
+            "heldout"
+          ],
+          "title": "Split",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "dataset",
+        "group_id",
+        "split",
+        "label_version",
+        "source_ref",
+        "input_sha256",
+        "label_source",
+        "label_provenance_ref",
+        "domain_kind",
+        "label_payload"
+      ],
+      "title": "GoldRecord",
+      "type": "object"
+    },
+    "Manifest": {
+      "$defs": {
+        "PinnedReference": {
+          "additionalProperties": false,
+          "properties": {
+            "ref": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Ref",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            },
+            "status": {
+              "enum": [
+                "available",
+                "unsupported",
+                "not_available"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "ref",
+            "sha256"
+          ],
+          "title": "PinnedReference",
+          "type": "object"
+        },
+        "PublicProjectionPolicy": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_dimensions": {
+              "items": {
+                "enum": [
+                  "dataset_alias",
+                  "split",
+                  "method",
+                  "config_ref",
+                  "field",
+                  "class",
+                  "metric",
+                  "statistic_version",
+                  "null_reason",
+                  "evidence_origin"
+                ],
+                "type": "string"
+              },
+              "title": "Allowed Dimensions",
+              "type": "array"
+            },
+            "allowed_numeric_metrics": {
+              "items": {
+                "enum": [
+                  "value",
+                  "numerator",
+                  "denominator",
+                  "corpus_N",
+                  "eligible_N",
+                  "answered_N",
+                  "comparable_N",
+                  "error_N",
+                  "abstention_N",
+                  "stale_N",
+                  "low",
+                  "high"
+                ],
+                "type": "string"
+              },
+              "title": "Allowed Numeric Metrics",
+              "type": "array"
+            },
+            "allowed_value_sets": {
+              "additionalProperties": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "propertyNames": {
+                "enum": [
+                  "dataset_alias",
+                  "split",
+                  "method",
+                  "config_ref",
+                  "field",
+                  "class",
+                  "metric",
+                  "statistic_version",
+                  "null_reason",
+                  "evidence_origin"
+                ]
+              },
+              "title": "Allowed Value Sets",
+              "type": "object"
+            },
+            "mode": {
+              "enum": [
+                "aggregate_only",
+                "synthetic_named_examples"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "synthetic_example_refs": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Synthetic Example Refs",
+              "type": "array"
+            }
+          },
+          "required": [
+            "mode",
+            "allowed_dimensions",
+            "allowed_value_sets",
+            "allowed_numeric_metrics",
+            "synthetic_example_refs"
+          ],
+          "title": "PublicProjectionPolicy",
+          "type": "object"
+        },
+        "SourceArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "count": {
+              "minimum": 0,
+              "title": "Count",
+              "type": "integer"
+            },
+            "member_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Member Ids",
+              "type": "array"
+            },
+            "namespace": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Namespace",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            },
+            "status": {
+              "enum": [
+                "available",
+                "unavailable",
+                "unsupported"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "namespace",
+            "status",
+            "sha256",
+            "count",
+            "member_ids"
+          ],
+          "title": "SourceArtifact",
+          "type": "object"
+        },
+        "SplitEntry": {
+          "additionalProperties": false,
+          "properties": {
+            "group_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Group Ids",
+              "type": "array"
+            },
+            "item_count": {
+              "minimum": 0,
+              "title": "Item Count",
+              "type": "integer"
+            },
+            "items_file": {
+              "title": "Items File",
+              "type": "string"
+            },
+            "items_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Items Sha256",
+              "type": "string"
+            },
+            "ordered_ids_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Ordered Ids Sha256",
+              "type": "string"
+            },
+            "ordered_item_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Ordered Item Ids",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "split": {
+              "enum": [
+                "dev",
+                "heldout"
+              ],
+              "title": "Split",
+              "type": "string"
+            }
+          },
+          "required": [
+            "split",
+            "items_file",
+            "item_count",
+            "ordered_item_ids",
+            "items_sha256",
+            "ordered_ids_sha256",
+            "group_ids"
+          ],
+          "title": "SplitEntry",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "comparator_config": {
+          "$ref": "#/$defs/PinnedReference"
+        },
+        "domain_adapter_ref": {
+          "$ref": "#/$defs/PinnedReference"
+        },
+        "experiment_refs": {
+          "additionalProperties": {
+            "$ref": "#/$defs/PinnedReference"
+          },
+          "propertyNames": {
+            "maxLength": 512,
+            "minLength": 1
+          },
+          "title": "Experiment Refs",
+          "type": "object"
+        },
+        "frozen_at": {
+          "title": "Frozen At",
+          "type": "string"
+        },
+        "group_members": {
+          "additionalProperties": {
+            "items": {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "propertyNames": {
+            "maxLength": 512,
+            "minLength": 1
+          },
+          "title": "Group Members",
+          "type": "object"
+        },
+        "group_split_map": {
+          "additionalProperties": {
+            "enum": [
+              "dev",
+              "heldout"
+            ],
+            "type": "string"
+          },
+          "propertyNames": {
+            "maxLength": 512,
+            "minLength": 1
+          },
+          "title": "Group Split Map",
+          "type": "object"
+        },
+        "manifest_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Manifest Id",
+          "type": "string"
+        },
+        "parent_manifest_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Manifest Sha256"
+        },
+        "partition_provenance": {
+          "enum": [
+            "seeded",
+            "published_canonical"
+          ],
+          "title": "Partition Provenance",
+          "type": "string"
+        },
+        "publication_policy": {
+          "$ref": "#/$defs/PublicProjectionPolicy"
+        },
+        "run_history_ref": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Run History Ref",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "scorer_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Scorer Version",
+          "type": "string"
+        },
+        "source_artifacts": {
+          "items": {
+            "$ref": "#/$defs/SourceArtifact"
+          },
+          "title": "Source Artifacts",
+          "type": "array"
+        },
+        "split_seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Split Seed"
+        },
+        "splits": {
+          "items": {
+            "$ref": "#/$defs/SplitEntry"
+          },
+          "title": "Splits",
+          "type": "array"
+        }
+      },
+      "required": [
+        "manifest_id",
+        "parent_manifest_sha256",
+        "split_seed",
+        "partition_provenance",
+        "frozen_at",
+        "scorer_version",
+        "comparator_config",
+        "domain_adapter_ref",
+        "experiment_refs",
+        "splits",
+        "group_split_map",
+        "group_members",
+        "source_artifacts",
+        "publication_policy",
+        "run_history_ref"
+      ],
+      "title": "Manifest",
+      "type": "object"
+    },
+    "ManifestEnrichmentResult": {
+      "$defs": {
+        "Manifest": {
+          "additionalProperties": false,
+          "properties": {
+            "comparator_config": {
+              "$ref": "#/$defs/PinnedReference"
+            },
+            "domain_adapter_ref": {
+              "$ref": "#/$defs/PinnedReference"
+            },
+            "experiment_refs": {
+              "additionalProperties": {
+                "$ref": "#/$defs/PinnedReference"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "title": "Experiment Refs",
+              "type": "object"
+            },
+            "frozen_at": {
+              "title": "Frozen At",
+              "type": "string"
+            },
+            "group_members": {
+              "additionalProperties": {
+                "items": {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "title": "Group Members",
+              "type": "object"
+            },
+            "group_split_map": {
+              "additionalProperties": {
+                "enum": [
+                  "dev",
+                  "heldout"
+                ],
+                "type": "string"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "title": "Group Split Map",
+              "type": "object"
+            },
+            "manifest_id": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Manifest Id",
+              "type": "string"
+            },
+            "parent_manifest_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parent Manifest Sha256"
+            },
+            "partition_provenance": {
+              "enum": [
+                "seeded",
+                "published_canonical"
+              ],
+              "title": "Partition Provenance",
+              "type": "string"
+            },
+            "publication_policy": {
+              "$ref": "#/$defs/PublicProjectionPolicy"
+            },
+            "run_history_ref": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Run History Ref",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "scorer_version": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Scorer Version",
+              "type": "string"
+            },
+            "source_artifacts": {
+              "items": {
+                "$ref": "#/$defs/SourceArtifact"
+              },
+              "title": "Source Artifacts",
+              "type": "array"
+            },
+            "split_seed": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Split Seed"
+            },
+            "splits": {
+              "items": {
+                "$ref": "#/$defs/SplitEntry"
+              },
+              "title": "Splits",
+              "type": "array"
+            }
+          },
+          "required": [
+            "manifest_id",
+            "parent_manifest_sha256",
+            "split_seed",
+            "partition_provenance",
+            "frozen_at",
+            "scorer_version",
+            "comparator_config",
+            "domain_adapter_ref",
+            "experiment_refs",
+            "splits",
+            "group_split_map",
+            "group_members",
+            "source_artifacts",
+            "publication_policy",
+            "run_history_ref"
+          ],
+          "title": "Manifest",
+          "type": "object"
+        },
+        "PinnedReference": {
+          "additionalProperties": false,
+          "properties": {
+            "ref": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Ref",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            },
+            "status": {
+              "enum": [
+                "available",
+                "unsupported",
+                "not_available"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "ref",
+            "sha256"
+          ],
+          "title": "PinnedReference",
+          "type": "object"
+        },
+        "PublicProjectionPolicy": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_dimensions": {
+              "items": {
+                "enum": [
+                  "dataset_alias",
+                  "split",
+                  "method",
+                  "config_ref",
+                  "field",
+                  "class",
+                  "metric",
+                  "statistic_version",
+                  "null_reason",
+                  "evidence_origin"
+                ],
+                "type": "string"
+              },
+              "title": "Allowed Dimensions",
+              "type": "array"
+            },
+            "allowed_numeric_metrics": {
+              "items": {
+                "enum": [
+                  "value",
+                  "numerator",
+                  "denominator",
+                  "corpus_N",
+                  "eligible_N",
+                  "answered_N",
+                  "comparable_N",
+                  "error_N",
+                  "abstention_N",
+                  "stale_N",
+                  "low",
+                  "high"
+                ],
+                "type": "string"
+              },
+              "title": "Allowed Numeric Metrics",
+              "type": "array"
+            },
+            "allowed_value_sets": {
+              "additionalProperties": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "propertyNames": {
+                "enum": [
+                  "dataset_alias",
+                  "split",
+                  "method",
+                  "config_ref",
+                  "field",
+                  "class",
+                  "metric",
+                  "statistic_version",
+                  "null_reason",
+                  "evidence_origin"
+                ]
+              },
+              "title": "Allowed Value Sets",
+              "type": "object"
+            },
+            "mode": {
+              "enum": [
+                "aggregate_only",
+                "synthetic_named_examples"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "synthetic_example_refs": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Synthetic Example Refs",
+              "type": "array"
+            }
+          },
+          "required": [
+            "mode",
+            "allowed_dimensions",
+            "allowed_value_sets",
+            "allowed_numeric_metrics",
+            "synthetic_example_refs"
+          ],
+          "title": "PublicProjectionPolicy",
+          "type": "object"
+        },
+        "SourceArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "count": {
+              "minimum": 0,
+              "title": "Count",
+              "type": "integer"
+            },
+            "member_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Member Ids",
+              "type": "array"
+            },
+            "namespace": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Namespace",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            },
+            "status": {
+              "enum": [
+                "available",
+                "unavailable",
+                "unsupported"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "namespace",
+            "status",
+            "sha256",
+            "count",
+            "member_ids"
+          ],
+          "title": "SourceArtifact",
+          "type": "object"
+        },
+        "SplitEntry": {
+          "additionalProperties": false,
+          "properties": {
+            "group_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Group Ids",
+              "type": "array"
+            },
+            "item_count": {
+              "minimum": 0,
+              "title": "Item Count",
+              "type": "integer"
+            },
+            "items_file": {
+              "title": "Items File",
+              "type": "string"
+            },
+            "items_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Items Sha256",
+              "type": "string"
+            },
+            "ordered_ids_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Ordered Ids Sha256",
+              "type": "string"
+            },
+            "ordered_item_ids": {
+              "items": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "title": "Ordered Item Ids",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "split": {
+              "enum": [
+                "dev",
+                "heldout"
+              ],
+              "title": "Split",
+              "type": "string"
+            }
+          },
+          "required": [
+            "split",
+            "items_file",
+            "item_count",
+            "ordered_item_ids",
+            "items_sha256",
+            "ordered_ids_sha256",
+            "group_ids"
+          ],
+          "title": "SplitEntry",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "canonical_manifest": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Manifest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "missing_metadata": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Missing Metadata",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "needs_owner_metadata"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "canonical_manifest",
+        "missing_metadata"
+      ],
+      "title": "ManifestEnrichmentResult",
+      "type": "object"
+    },
+    "MetricRow": {
+      "$defs": {
+        "ConfusionCounts": {
+          "additionalProperties": false,
+          "properties": {
+            "false_negative": {
+              "minimum": 0,
+              "title": "False Negative",
+              "type": "integer"
+            },
+            "false_positive": {
+              "minimum": 0,
+              "title": "False Positive",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "true_negative": {
+              "minimum": 0,
+              "title": "True Negative",
+              "type": "integer"
+            },
+            "true_positive": {
+              "minimum": 0,
+              "title": "True Positive",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "true_positive",
+            "false_positive",
+            "false_negative",
+            "true_negative"
+          ],
+          "title": "ConfusionCounts",
+          "type": "object"
+        },
+        "Interval": {
+          "additionalProperties": false,
+          "properties": {
+            "draw_ids_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Draw Ids Sha256"
+            },
+            "high": {
+              "title": "High",
+              "type": "number"
+            },
+            "level": {
+              "exclusiveMaximum": 1,
+              "exclusiveMinimum": 0,
+              "title": "Level",
+              "type": "number"
+            },
+            "low": {
+              "title": "Low",
+              "type": "number"
+            },
+            "method": {
+              "enum": [
+                "wilson",
+                "paired_group_percentile"
+              ],
+              "title": "Method",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "valid_draws": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Valid Draws"
+            }
+          },
+          "required": [
+            "method",
+            "low",
+            "high",
+            "level",
+            "valid_draws",
+            "draw_ids_sha256"
+          ],
+          "title": "Interval",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "abstention_N": {
+          "minimum": 0,
+          "title": "Abstention N",
+          "type": "integer"
+        },
+        "answered_N": {
+          "minimum": 0,
+          "title": "Answered N",
+          "type": "integer"
+        },
+        "class": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Class"
+        },
+        "comparable_N": {
+          "minimum": 0,
+          "title": "Comparable N",
+          "type": "integer"
+        },
+        "config_ref": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Config Ref",
+          "type": "string"
+        },
+        "confusion_counts": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConfusionCounts"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "corpus_N": {
+          "minimum": 0,
+          "title": "Corpus N",
+          "type": "integer"
+        },
+        "dataset_alias": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Dataset Alias",
+          "type": "string"
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator"
+        },
+        "eligible_N": {
+          "minimum": 0,
+          "title": "Eligible N",
+          "type": "integer"
+        },
+        "error_N": {
+          "minimum": 0,
+          "title": "Error N",
+          "type": "integer"
+        },
+        "evidence_origin": {
+          "enum": [
+            "live",
+            "recorded_replay",
+            "synthetic",
+            "agent_provisional",
+            "not_run"
+          ],
+          "title": "Evidence Origin",
+          "type": "string"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Field"
+        },
+        "interval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "measurement_status": {
+          "enum": [
+            "measured",
+            "unsupported",
+            "not_measured"
+          ],
+          "title": "Measurement Status",
+          "type": "string"
+        },
+        "method": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        },
+        "metric": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Metric",
+          "type": "string"
+        },
+        "null_reason": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Null Reason"
+        },
+        "numerator": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Numerator"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "split": {
+          "enum": [
+            "dev",
+            "heldout"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "stale_N": {
+          "minimum": 0,
+          "title": "Stale N",
+          "type": "integer"
+        },
+        "statistic_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Statistic Version",
+          "type": "string"
+        },
+        "supports": {
+          "additionalProperties": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "propertyNames": {
+            "maxLength": 512,
+            "minLength": 1
+          },
+          "title": "Supports",
+          "type": "object"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "dataset_alias",
+        "split",
+        "method",
+        "config_ref",
+        "field",
+        "class",
+        "metric",
+        "statistic_version",
+        "measurement_status",
+        "numerator",
+        "denominator",
+        "confusion_counts",
+        "supports",
+        "corpus_N",
+        "eligible_N",
+        "answered_N",
+        "comparable_N",
+        "error_N",
+        "abstention_N",
+        "stale_N",
+        "value",
+        "null_reason",
+        "interval",
+        "evidence_origin"
+      ],
+      "title": "MetricRow",
+      "type": "object"
+    },
+    "MetricSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "averaging": {
+          "enum": [
+            "none",
+            "micro",
+            "macro",
+            "weighted"
+          ],
+          "title": "Averaging",
+          "type": "string"
+        },
+        "denominator_policy": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Denominator Policy",
+          "type": "string"
+        },
+        "metric": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Metric",
+          "type": "string"
+        },
+        "population": {
+          "enum": [
+            "as_frozen",
+            "comparable",
+            "answered_only"
+          ],
+          "title": "Population",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "statistic_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Statistic Version",
+          "type": "string"
+        },
+        "zero_denominator_reason": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Zero Denominator Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metric",
+        "statistic_version",
+        "population",
+        "denominator_policy",
+        "zero_denominator_reason",
+        "averaging"
+      ],
+      "title": "MetricSpec",
+      "type": "object"
+    },
+    "Outcome": {
+      "$defs": {
+        "JsonValue": {}
+      },
+      "additionalProperties": false,
+      "properties": {
+        "class": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Class"
+        },
+        "correct": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Correct"
+        },
+        "dataset": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Dataset",
+          "type": "string"
+        },
+        "eligibility": {
+          "enum": [
+            "eligible",
+            "ineligible",
+            "unlabelled"
+          ],
+          "title": "Eligibility",
+          "type": "string"
+        },
+        "evidence_origin": {
+          "enum": [
+            "live",
+            "recorded_replay",
+            "synthetic",
+            "agent_provisional",
+            "not_run"
+          ],
+          "title": "Evidence Origin",
+          "type": "string"
+        },
+        "expected": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Field"
+        },
+        "group_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Group Id",
+          "type": "string"
+        },
+        "human_touched_prediction": {
+          "title": "Human Touched Prediction",
+          "type": "boolean"
+        },
+        "issues": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "item_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "ledger_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Ledger Refs",
+          "type": "array"
+        },
+        "method": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        },
+        "predicted": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "split": {
+          "enum": [
+            "dev",
+            "heldout"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "abstained",
+            "blocked",
+            "invalid",
+            "provider_error",
+            "stale",
+            "unavailable",
+            "not_run"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "group_id",
+        "dataset",
+        "split",
+        "method",
+        "field",
+        "class",
+        "eligibility",
+        "status",
+        "correct",
+        "predicted",
+        "expected",
+        "human_touched_prediction",
+        "evidence_origin",
+        "issues",
+        "ledger_refs"
+      ],
+      "title": "Outcome",
+      "type": "object"
+    },
+    "Prediction": {
+      "$defs": {
+        "JsonValue": {},
+        "SourceRef": {
+          "additionalProperties": false,
+          "properties": {
+            "handle": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Handle",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sha256"
+            }
+          },
+          "required": [
+            "handle",
+            "sha256"
+          ],
+          "title": "SourceRef",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Config Sha256",
+          "type": "string"
+        },
+        "domain_payload": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Domain Payload"
+        },
+        "human_effective_output": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "human_provenance_ref": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Human Provenance Ref"
+        },
+        "issues": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "item_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "ledger_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Ledger Refs",
+          "type": "array"
+        },
+        "machine_output": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "method": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        },
+        "method_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Method Version",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "origin": {
+          "enum": [
+            "live",
+            "recorded_replay",
+            "synthetic",
+            "agent_provisional",
+            "not_run"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_refs": {
+          "items": {
+            "$ref": "#/$defs/SourceRef"
+          },
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "abstained",
+            "blocked",
+            "invalid",
+            "provider_error",
+            "stale",
+            "unavailable",
+            "not_run"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "method",
+        "method_version",
+        "config_sha256",
+        "model",
+        "origin",
+        "status",
+        "domain_payload",
+        "machine_output",
+        "human_effective_output",
+        "human_provenance_ref",
+        "issues",
+        "ledger_refs",
+        "source_refs"
+      ],
+      "title": "Prediction",
+      "type": "object"
+    },
+    "PublicMethodInput": {
+      "$defs": {
+        "JsonValue": {}
+      },
+      "additionalProperties": false,
+      "properties": {
+        "input_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Input Sha256",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "public_config_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Public Config Refs",
+          "type": "array"
+        },
+        "public_payload": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Public Payload",
+          "type": "object"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "item_id",
+        "public_payload",
+        "input_sha256",
+        "public_config_refs"
+      ],
+      "title": "PublicMethodInput",
+      "type": "object"
+    },
+    "PublicProjectionPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_dimensions": {
+          "items": {
+            "enum": [
+              "dataset_alias",
+              "split",
+              "method",
+              "config_ref",
+              "field",
+              "class",
+              "metric",
+              "statistic_version",
+              "null_reason",
+              "evidence_origin"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Dimensions",
+          "type": "array"
+        },
+        "allowed_numeric_metrics": {
+          "items": {
+            "enum": [
+              "value",
+              "numerator",
+              "denominator",
+              "corpus_N",
+              "eligible_N",
+              "answered_N",
+              "comparable_N",
+              "error_N",
+              "abstention_N",
+              "stale_N",
+              "low",
+              "high"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Numeric Metrics",
+          "type": "array"
+        },
+        "allowed_value_sets": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "propertyNames": {
+            "enum": [
+              "dataset_alias",
+              "split",
+              "method",
+              "config_ref",
+              "field",
+              "class",
+              "metric",
+              "statistic_version",
+              "null_reason",
+              "evidence_origin"
+            ]
+          },
+          "title": "Allowed Value Sets",
+          "type": "object"
+        },
+        "mode": {
+          "enum": [
+            "aggregate_only",
+            "synthetic_named_examples"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "synthetic_example_refs": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Synthetic Example Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mode",
+        "allowed_dimensions",
+        "allowed_value_sets",
+        "allowed_numeric_metrics",
+        "synthetic_example_refs"
+      ],
+      "title": "PublicProjectionPolicy",
+      "type": "object"
+    },
+    "ResamplingSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "draws": {
+          "minimum": 1,
+          "title": "Draws",
+          "type": "integer"
+        },
+        "group_order": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Group Order",
+          "type": "array"
+        },
+        "level": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Level",
+          "type": "number"
+        },
+        "method": {
+          "const": "percentile",
+          "title": "Method",
+          "type": "string"
+        },
+        "min_support": {
+          "exclusiveMinimum": 0,
+          "title": "Min Support",
+          "type": "integer"
+        },
+        "min_valid_draws": {
+          "exclusiveMinimum": 0,
+          "title": "Min Valid Draws",
+          "type": "integer"
+        },
+        "rng_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Rng Version",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "statistic_version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Statistic Version",
+          "type": "string"
+        },
+        "stratum_map": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 512,
+                "minLength": 1,
+                "type": "string"
+              },
+              "propertyNames": {
+                "maxLength": 512,
+                "minLength": 1
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stratum Map"
+        },
+        "unit": {
+          "const": "group_id",
+          "title": "Unit",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "unit",
+        "seed",
+        "draws",
+        "level",
+        "method",
+        "group_order",
+        "stratum_map",
+        "min_support",
+        "min_valid_draws",
+        "statistic_version",
+        "rng_version"
+      ],
+      "title": "ResamplingSpec",
+      "type": "object"
+    },
+    "S1MinimalManifest": {
+      "additionalProperties": false,
+      "description": "A partial manifest view; it must never masquerade as enriched canonical gold.",
+      "properties": {
+        "frozen_at": {
+          "title": "Frozen At",
+          "type": "string"
+        },
+        "item_count": {
+          "minimum": 0,
+          "title": "Item Count",
+          "type": "integer"
+        },
+        "items_file": {
+          "title": "Items File",
+          "type": "string"
+        },
+        "schema": {
+          "const": 1,
+          "title": "Schema",
+          "type": "integer"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Seed"
+        },
+        "split": {
+          "enum": [
+            "dev",
+            "heldout"
+          ],
+          "title": "Split",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "split",
+        "seed",
+        "frozen_at",
+        "items_file",
+        "item_count"
+      ],
+      "title": "S1MinimalManifest",
+      "type": "object"
+    }
+  },
+  "stage": "models-only"
+}

@@ -1,0 +1,997 @@
+{
+  "$defs": {
+    "Allocation": {
+      "additionalProperties": false,
+      "properties": {
+        "allocation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Allocation Id",
+          "type": "string"
+        },
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "plan_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Plan Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "allocation_id",
+        "authority_id",
+        "operation_id",
+        "plan_sha256"
+      ],
+      "title": "Allocation",
+      "type": "object"
+    },
+    "BudgetAuthority": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "cap_usd": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Cap Usd",
+          "type": "string"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expires At"
+        },
+        "max_outbound_attempts": {
+          "minimum": 0,
+          "title": "Max Outbound Attempts",
+          "type": "integer"
+        },
+        "run_deadline_utc": {
+          "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+          "title": "Run Deadline Utc",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "scope_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Scope Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "authority_id",
+        "scope_sha256",
+        "cap_usd",
+        "max_outbound_attempts",
+        "run_deadline_utc"
+      ],
+      "title": "BudgetAuthority",
+      "type": "object"
+    },
+    "CallContext": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "child_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Child Id",
+          "type": "string"
+        },
+        "config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Config Sha256",
+          "type": "string"
+        },
+        "consumer_context_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Consumer Context Sha256",
+          "type": "string"
+        },
+        "consumer_namespace": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Consumer Namespace",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "parent_span_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Span Id"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "run_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_generation": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Generation"
+        },
+        "span_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Span Id",
+          "type": "string"
+        },
+        "task_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "template_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Template Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "authority_id",
+        "run_id",
+        "operation_id",
+        "child_id",
+        "task_id",
+        "span_id",
+        "consumer_namespace",
+        "purpose",
+        "consumer_context_sha256",
+        "policy_sha256",
+        "template_sha256",
+        "config_sha256"
+      ],
+      "title": "CallContext",
+      "type": "object"
+    },
+    "ChoiceSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "object"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "maxProperties": 255,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "title": "Criteria",
+          "type": "object"
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "choice",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions",
+        "criteria"
+      ],
+      "title": "ChoiceSpec",
+      "type": "object"
+    },
+    "GenerateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "generate",
+          "title": "Kind",
+          "type": "string"
+        },
+        "max_output_tokens": {
+          "exclusiveMinimum": 0,
+          "title": "Max Output Tokens",
+          "type": "integer"
+        },
+        "messages": {
+          "items": {
+            "$ref": "#/$defs/Message"
+          },
+          "minItems": 1,
+          "title": "Messages",
+          "type": "array"
+        },
+        "model": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "reasoning_effort": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Effort"
+        },
+        "schema": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream": {
+          "title": "Stream",
+          "type": "boolean"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature"
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "model",
+        "messages",
+        "max_output_tokens",
+        "stream"
+      ],
+      "title": "GenerateRequest",
+      "type": "object"
+    },
+    "ImagePart": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "exclusiveMinimum": 0,
+          "title": "Byte Length",
+          "type": "integer"
+        },
+        "content_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Sha256",
+          "type": "string"
+        },
+        "decoded_height": {
+          "exclusiveMinimum": 0,
+          "title": "Decoded Height",
+          "type": "integer"
+        },
+        "decoded_width": {
+          "exclusiveMinimum": 0,
+          "title": "Decoded Width",
+          "type": "integer"
+        },
+        "detail": {
+          "enum": [
+            "low",
+            "high",
+            "auto"
+          ],
+          "title": "Detail",
+          "type": "string"
+        },
+        "execution_ref": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Execution Ref",
+          "type": "string"
+        },
+        "media_type": {
+          "enum": [
+            "image/png",
+            "image/jpeg"
+          ],
+          "title": "Media Type",
+          "type": "string"
+        },
+        "rendition_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Rendition Sha256",
+          "type": "string"
+        },
+        "source_generation": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Source Generation",
+          "type": "string"
+        },
+        "transform_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Transform Sha256",
+          "type": "string"
+        },
+        "type": {
+          "const": "local_image",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "execution_ref",
+        "content_sha256",
+        "media_type",
+        "byte_length",
+        "decoded_width",
+        "decoded_height",
+        "rendition_sha256",
+        "source_generation",
+        "transform_sha256",
+        "detail"
+      ],
+      "title": "ImagePart",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "Limits": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt_timeout_s": {
+          "exclusiveMinimum": 0,
+          "title": "Attempt Timeout S",
+          "type": "number"
+        },
+        "max_attempts_total": {
+          "maximum": 3,
+          "minimum": 1,
+          "title": "Max Attempts Total",
+          "type": "integer"
+        },
+        "max_choice_options": {
+          "maximum": 255,
+          "minimum": 1,
+          "title": "Max Choice Options",
+          "type": "integer"
+        },
+        "max_concurrent_operations": {
+          "exclusiveMinimum": 0,
+          "title": "Max Concurrent Operations",
+          "type": "integer"
+        },
+        "max_content_repairs": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Content Repairs",
+          "type": "integer"
+        },
+        "max_outbound_attempts": {
+          "minimum": 0,
+          "title": "Max Outbound Attempts",
+          "type": "integer"
+        },
+        "max_questions": {
+          "exclusiveMinimum": 0,
+          "title": "Max Questions",
+          "type": "integer"
+        },
+        "max_request_bytes": {
+          "exclusiveMinimum": 0,
+          "title": "Max Request Bytes",
+          "type": "integer"
+        },
+        "max_response_bytes": {
+          "exclusiveMinimum": 0,
+          "title": "Max Response Bytes",
+          "type": "integer"
+        },
+        "max_state_plus_longest_question_tokens": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max State Plus Longest Question Tokens"
+        },
+        "max_total_input_tokens": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Total Input Tokens"
+        },
+        "max_total_output_tokens": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Total Output Tokens"
+        },
+        "operation_deadline_s": {
+          "exclusiveMinimum": 0,
+          "title": "Operation Deadline S",
+          "type": "number"
+        },
+        "run_deadline_utc": {
+          "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+          "title": "Run Deadline Utc",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "max_attempts_total",
+        "max_content_repairs",
+        "operation_deadline_s",
+        "attempt_timeout_s",
+        "run_deadline_utc",
+        "max_outbound_attempts",
+        "max_concurrent_operations",
+        "max_request_bytes",
+        "max_response_bytes",
+        "max_questions",
+        "max_choice_options"
+      ],
+      "title": "Limits",
+      "type": "object"
+    },
+    "Message": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "local_image": "#/$defs/ImagePart",
+                "text": "#/$defs/TextPart"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TextPart"
+              },
+              {
+                "$ref": "#/$defs/ImagePart"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Content",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "system",
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "content"
+      ],
+      "title": "Message",
+      "type": "object"
+    },
+    "NoulCriteria": {
+      "additionalProperties": false,
+      "properties": {
+        "false": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "False"
+        },
+        "true": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "True"
+        }
+      },
+      "title": "NoulCriteria",
+      "type": "object"
+    },
+    "NoulSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoulCriteria"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "noul",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions"
+      ],
+      "title": "NoulSpec",
+      "type": "object"
+    },
+    "ScoreSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "object"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "maxItems": 10,
+          "minItems": 2,
+          "title": "Criteria",
+          "type": "array"
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "score",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions",
+        "criteria"
+      ],
+      "title": "ScoreSpec",
+      "type": "object"
+    },
+    "TextPart": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "type": {
+          "const": "text",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "title": "TextPart",
+      "type": "object"
+    },
+    "TypedJudgmentRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "typed_judgment",
+          "title": "Kind",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "questions": {
+          "additionalProperties": {
+            "discriminator": {
+              "mapping": {
+                "choice": "#/$defs/ChoiceSpec",
+                "noul": "#/$defs/NoulSpec",
+                "score": "#/$defs/ScoreSpec"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ChoiceSpec"
+              },
+              {
+                "$ref": "#/$defs/NoulSpec"
+              },
+              {
+                "$ref": "#/$defs/ScoreSpec"
+              }
+            ]
+          },
+          "maxProperties": 256,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "title": "Questions",
+          "type": "object"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "State"
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "model",
+        "state",
+        "questions"
+      ],
+      "title": "TypedJudgmentRequest",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Required public accounting binding; does not dispatch or admit an operation.",
+  "properties": {
+    "allocation": {
+      "$ref": "#/$defs/Allocation"
+    },
+    "budget": {
+      "$ref": "#/$defs/BudgetAuthority"
+    },
+    "capture_mode": {
+      "enum": [
+        "disabled",
+        "fixture_replay",
+        "consumer_store"
+      ],
+      "title": "Capture Mode",
+      "type": "string"
+    },
+    "context": {
+      "$ref": "#/$defs/CallContext"
+    },
+    "ledger_ref": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Ledger Ref",
+      "type": "string"
+    },
+    "limits": {
+      "$ref": "#/$defs/Limits"
+    },
+    "provider_config_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Provider Config Sha256",
+      "type": "string"
+    },
+    "purpose": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "request": {
+      "discriminator": {
+        "mapping": {
+          "generate": "#/$defs/GenerateRequest",
+          "typed_judgment": "#/$defs/TypedJudgmentRequest"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/GenerateRequest"
+        },
+        {
+          "$ref": "#/$defs/TypedJudgmentRequest"
+        }
+      ],
+      "title": "Request"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request",
+    "provider_config_sha256",
+    "purpose",
+    "ledger_ref",
+    "budget",
+    "context",
+    "limits",
+    "allocation",
+    "capture_mode"
+  ],
+  "title": "ExecutionEnvelope",
+  "type": "object"
+}

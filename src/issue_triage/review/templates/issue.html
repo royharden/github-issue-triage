@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}Issue {{ issue }}{% endblock %}
+{% block content %}<a href="/">← Review queue</a><p class="eyebrow">{{ issue }}</p><h1>{{ title }}</h1>
+<section class="card"><h2>Captured issue</h2><pre>{{ body }}</pre></section>
+<h2>Field decisions</h2><p>Accept a proposed value, edit its JSON, reject, or reopen. Decisions persist as agent_provisional.</p>
+<div class="grid">{% for form in forms %}<section class="card"><h3>{{ form.field }}</h3><p class="muted">{{ form.status }}</p>
+<form action="/review" method="post" data-field="{{ form.field }}">
+<input type="hidden" name="payload" value="{{ form.payload }}"><input type="hidden" name="seal" value="{{ form.seal }}">
+<input type="hidden" name="csrf" value="{{ form.csrf }}"><label for="decision-{{ form.field }}">Decision</label>
+<select id="decision-{{ form.field }}" name="disposition"><option value="accept">Accept proposal</option><option value="edit">Edit</option><option value="reject">Reject</option><option value="reopen">Reopen</option></select>
+<label for="value-{{ form.field }}">Value as JSON (used for Edit)</label><textarea id="value-{{ form.field }}" name="edit_value" maxlength="16384" rows="4">{{ form.value }}</textarea>
+<label for="reason-{{ form.field }}">Reason</label><textarea id="reason-{{ form.field }}" name="reason" maxlength="2000" rows="2">Local browser rehearsal</textarea>
+<button>Record {{ form.field }} decision</button></form></section>{% endfor %}</div>
+<section class="card"><h2>Dry-run proposal</h2><p>Preview effective labels and comment decisions. This creates local receipts with zero external writes.</p>
+<form action="/preview" method="post"><input type="hidden" name="payload" value="{{ preview.payload }}"><input type="hidden" name="seal" value="{{ preview.seal }}"><button>Create dry-run preview</button></form></section>
+<details class="card"><summary>Proposal, pinned evidence and process details</summary><pre>{{ proposal }}</pre></details>{% endblock %}

@@ -1,0 +1,178 @@
+{
+  "authority": {
+    "schema_version": 1,
+    "authority_id": "synthetic-authority",
+    "scope_sha256": "2e543a502d97d3080df6611378d8c52c36b93c71e7bf0d78b19a12451f142601",
+    "cap_usd": "0.50",
+    "max_outbound_attempts": 10,
+    "run_deadline_utc": "2026-10-15T00:00:00Z",
+    "expires_at": null
+  },
+  "snapshot": {
+    "schema_version": 1,
+    "provenance": {
+      "origin": "synthetic",
+      "source_url": null,
+      "retrieved_at": "2026-10-14T00:00:00Z",
+      "official_verified_at": null,
+      "source_commit": null
+    },
+    "policies": [
+      {
+        "schema_version": 1,
+        "provider": "synthetic",
+        "model": "fixture-model",
+        "context_sha256": "ea09cb3915f6280210c106b375c57972713aa7e8ffaf74afe96dc3244ab9a625",
+        "cache_mode": "flat_inclusive",
+        "input_usd_per_million": "100",
+        "cache_read_usd_per_million": null,
+        "cache_write_usd_per_million": null,
+        "output_usd_per_million": null,
+        "fee_usd": "0"
+      }
+    ],
+    "data_sha256": "528e3a0bf93f1bb8dd86e0165b4f5808da65f1dd5101b46b27647d0ede4d15b5"
+  },
+  "bounds": [
+    {
+      "schema_version": 1,
+      "snapshot_sha256": "51c5be0e0d0db0416b34cc32633338dc363b5b21603987ef1be9e8da89b04671",
+      "policy_sha256": "f9d2a909a60a07dc3bc47309bee4611e7478a2a3b49e5ac8451eda66c9409ad0",
+      "provider_config_sha256": "ae2250bb2563882a230d0bc3a65275643452aa6461380b2508ef449e9d752f91",
+      "model": "fixture-model",
+      "request_shape_limit_sha256": "d04b322f099f01e73f17c4217e7ef46cfe72ae9f80bd4b102349ec4c625897c1",
+      "input_token_maximum": 1000,
+      "output_token_maximum": null,
+      "bound_kind": "synthetic_fixture",
+      "proof_sha256": "053b901a0a643ae54489540633b75a4bfda3d7f519c974b0843b6ab47aeac8d1"
+    }
+  ],
+  "requests": [
+    {
+      "schema_version": 1,
+      "bound_evidence_sha256": "6ac76f68a3f3e152b950a6a21eac7c7888c40813683963a58af07cb05b0000d6",
+      "request_identity_sha256": "059413044539577770facad6ff3ed9b4a6fbb5ee0c95835ecda38516bcfdd8f9",
+      "dispatched_envelope_sha256": "e7c0c67a79f8156a2f9bf64288482c96716337cd284f7821d2d519cae65cfb19",
+      "input_token_count": 100,
+      "output_token_maximum": null,
+      "proof_sha256": "8291cd5c6254cc59ff183d677db1cdf457047aeaa5cc335e6766f83e5dabcfdb"
+    }
+  ],
+  "context": {
+    "schema_version": 1,
+    "authority_id": "synthetic-authority",
+    "run_id": "run1",
+    "operation_id": "op1",
+    "child_id": "group",
+    "task_id": "task1",
+    "span_id": "span1",
+    "parent_span_id": null,
+    "consumer_namespace": "synthetic",
+    "purpose": "synthetic.test",
+    "source_generation": "g1",
+    "consumer_context_sha256": "5e19fc99c912a1c7be9f42c50ead5708a676632e5a4ef34fa2cdcc273ca8c748",
+    "policy_sha256": "11dec1405232c0365e22bd3e21375004c23458ca80bb3039eaf78c75fb153d98",
+    "template_sha256": "dae1a374ddaefa22ba8c71598ad98c02147631f5867f0ed3386ea06e5d8d8d4b",
+    "config_sha256": "48882ab48bfdf3bef2fe65e3304e91ccfd8f74e357c183367ad6fe903fe0e697"
+  },
+  "child_context": {
+    "schema_version": 1,
+    "authority_id": "synthetic-authority",
+    "run_id": "run1",
+    "operation_id": "op1",
+    "child_id": "child0",
+    "task_id": "task1",
+    "span_id": "span1",
+    "parent_span_id": null,
+    "consumer_namespace": "synthetic",
+    "purpose": "synthetic.test",
+    "source_generation": "g1",
+    "consumer_context_sha256": "5e19fc99c912a1c7be9f42c50ead5708a676632e5a4ef34fa2cdcc273ca8c748",
+    "policy_sha256": "11dec1405232c0365e22bd3e21375004c23458ca80bb3039eaf78c75fb153d98",
+    "template_sha256": "dae1a374ddaefa22ba8c71598ad98c02147631f5867f0ed3386ea06e5d8d8d4b",
+    "config_sha256": "48882ab48bfdf3bef2fe65e3304e91ccfd8f74e357c183367ad6fe903fe0e697"
+  },
+  "limits": {
+    "schema_version": 1,
+    "max_attempts_total": 2,
+    "max_content_repairs": 0,
+    "operation_deadline_s": 30.0,
+    "attempt_timeout_s": 20.0,
+    "run_deadline_utc": "2026-10-15T00:00:00Z",
+    "max_outbound_attempts": 10,
+    "max_concurrent_operations": 2,
+    "max_total_input_tokens": null,
+    "max_state_plus_longest_question_tokens": null,
+    "max_request_bytes": 32000,
+    "max_response_bytes": 64000,
+    "max_questions": 32,
+    "max_choice_options": 64,
+    "max_total_output_tokens": null
+  },
+  "plan": {
+    "schema_version": 1,
+    "operation_id": "op1",
+    "authority_id": "synthetic-authority",
+    "context_sha256": "63783f6d4b08c0fe2963e5129edeaff13275238b0cf081e5b4e79c73bf3d365a",
+    "children": [
+      {
+        "child_id": "child0",
+        "purpose": "synthetic.test",
+        "provider_config_sha256": "ae2250bb2563882a230d0bc3a65275643452aa6461380b2508ef449e9d752f91",
+        "model": "fixture-model",
+        "bound_evidence_sha256": "6ac76f68a3f3e152b950a6a21eac7c7888c40813683963a58af07cb05b0000d6",
+        "max_attempts": 2,
+        "max_repairs": 0,
+        "input_token_maximum": 1000,
+        "output_token_maximum": null,
+        "fee_maximum_usd": "0",
+        "reserved_usd_per_attempt": "0.1",
+        "request_shape_limit_sha256": "d04b322f099f01e73f17c4217e7ef46cfe72ae9f80bd4b102349ec4c625897c1",
+        "conditional": false
+      }
+    ]
+  },
+  "clock_utc": "2026-10-14T22:30:00+00:00",
+  "allocation": {
+    "schema_version": 1,
+    "allocation_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "authority_id": "synthetic-authority",
+    "operation_id": "op1",
+    "plan_sha256": "0e4a1248bd6b15d1941ff40a0a52cf908793fb592f0777aee91e17d369be1f51"
+  },
+  "v1_totals": {
+    "known_spend_usd": "0",
+    "active_holds_usd": "0",
+    "unknown_liability_usd": "0.1",
+    "future_holds_usd": "0.1",
+    "total_exposure_usd": "0.2",
+    "dispatched_attempts": 1,
+    "future_attempts": 1,
+    "halted": false
+  },
+  "producer_commit": "bc2f54bce0750d3203f7630afab4a11cf8dd6cb6",
+  "producer_blobs": [
+    {
+      "path": "src/llm_router_eval/shared/callledger/__init__.py",
+      "committed_blob_sha256": "178bb3747269d1c9e313b8ff48515157542fd28d8371fbee2bec9b193ba1f735"
+    },
+    {
+      "path": "src/llm_router_eval/shared/callledger/models.py",
+      "committed_blob_sha256": "7274d1eebed5370460d83af6e4187cc74037d0ab600889219423dbcdd81277e7"
+    },
+    {
+      "path": "src/llm_router_eval/shared/callledger/ledger.py",
+      "committed_blob_sha256": "fefa367871c857d0bec3fb92f83647a4e86044296d9d221c68d57d27e36f34f1"
+    },
+    {
+      "path": "src/llm_router_eval/shared/callledger/pricing.py",
+      "committed_blob_sha256": "daf38f487eeb70b48cc4025c54a19eea581a2d5d00084f534d9f2b9a55056c74"
+    },
+    {
+      "path": "src/llm_router_eval/shared/callledger/projection.py",
+      "committed_blob_sha256": "5c0194e299b2c58f85e745ac093063dcb89689ea162ba378a37afc48a0f4dc69"
+    }
+  ],
+  "schema_sql_sha256": "d0f223301262223bb84e977de5da3394f7f4f575c19491ad6d3031102a2a3656",
+  "what_bug_this_catches": "Version2 limits migration must retain version1 unknown spend, future hold and attempted counter, not reset grant on restart."
+}

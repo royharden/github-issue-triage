@@ -1,0 +1,151 @@
+{
+  "$defs": {
+    "ChildBound": {
+      "additionalProperties": false,
+      "properties": {
+        "bound_evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Bound Evidence Sha256",
+          "type": "string"
+        },
+        "child_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Child Id",
+          "type": "string"
+        },
+        "conditional": {
+          "title": "Conditional",
+          "type": "boolean"
+        },
+        "fee_maximum_usd": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Fee Maximum Usd",
+          "type": "string"
+        },
+        "input_token_maximum": {
+          "minimum": 0,
+          "title": "Input Token Maximum",
+          "type": "integer"
+        },
+        "max_attempts": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "max_repairs": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Repairs",
+          "type": "integer"
+        },
+        "model": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "output_token_maximum": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Output Token Maximum"
+        },
+        "provider_config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Provider Config Sha256",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "request_shape_limit_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Request Shape Limit Sha256",
+          "type": "string"
+        },
+        "reserved_usd_per_attempt": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Reserved Usd Per Attempt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "child_id",
+        "purpose",
+        "provider_config_sha256",
+        "model",
+        "bound_evidence_sha256",
+        "max_attempts",
+        "max_repairs",
+        "input_token_maximum",
+        "output_token_maximum",
+        "fee_maximum_usd",
+        "reserved_usd_per_attempt",
+        "request_shape_limit_sha256",
+        "conditional"
+      ],
+      "title": "ChildBound",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "authority_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Authority Id",
+      "type": "string"
+    },
+    "children": {
+      "items": {
+        "$ref": "#/$defs/ChildBound"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Children",
+      "type": "array"
+    },
+    "context_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Context Sha256",
+      "type": "string"
+    },
+    "operation_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Operation Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation_id",
+    "authority_id",
+    "context_sha256",
+    "children"
+  ],
+  "title": "OperationPlan",
+  "type": "object"
+}

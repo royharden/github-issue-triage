@@ -1,0 +1,169 @@
+{
+  "$defs": {
+    "BillingPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "fee_context_known": {
+          "title": "Fee Context Known",
+          "type": "boolean"
+        },
+        "policy_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Policy Sha256",
+          "type": "string"
+        },
+        "required_usage_fields": {
+          "items": {
+            "enum": [
+              "input_tokens",
+              "output_tokens",
+              "cache_read_input_tokens",
+              "cache_write_input_tokens",
+              "reasoning_output_tokens"
+            ],
+            "type": "string"
+          },
+          "title": "Required Usage Fields",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "policy_sha256",
+        "required_usage_fields",
+        "fee_context_known"
+      ],
+      "title": "BillingPolicy",
+      "type": "object"
+    },
+    "NormalizedUsage": {
+      "additionalProperties": false,
+      "properties": {
+        "cache_read_input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Read Input Tokens"
+        },
+        "cache_write_input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Write Input Tokens"
+        },
+        "input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Tokens"
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Tokens"
+        },
+        "reasoning_output_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Output Tokens"
+        }
+      },
+      "title": "NormalizedUsage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Validate completeness of a declared cost; does not calculate or verify pricing.",
+  "properties": {
+    "billing_policy": {
+      "$ref": "#/$defs/BillingPolicy"
+    },
+    "computed_cost_usd": {
+      "anyOf": [
+        {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Computed Cost Usd"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "unresolved_liability_usd": {
+      "maxLength": 64,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Unresolved Liability Usd",
+      "type": "string"
+    },
+    "usage": {
+      "$ref": "#/$defs/NormalizedUsage"
+    }
+  },
+  "required": [
+    "schema_version",
+    "usage",
+    "billing_policy",
+    "status",
+    "computed_cost_usd",
+    "unresolved_liability_usd"
+  ],
+  "title": "CostObservation",
+  "type": "object"
+}

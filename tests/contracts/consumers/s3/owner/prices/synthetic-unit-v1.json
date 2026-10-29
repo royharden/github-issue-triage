@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "origin": "synthetic",
+    "source_url": null,
+    "retrieved_at": "2026-10-14T00:00:00Z",
+    "official_verified_at": null,
+    "source_commit": null
+  },
+  "policies": [
+    {
+      "schema_version": 1,
+      "provider": "synthetic",
+      "model": "fixture-model",
+      "context_sha256": "ea09cb3915f6280210c106b375c57972713aa7e8ffaf74afe96dc3244ab9a625",
+      "cache_mode": "flat_inclusive",
+      "input_usd_per_million": "0.042",
+      "cache_read_usd_per_million": null,
+      "cache_write_usd_per_million": null,
+      "output_usd_per_million": null,
+      "fee_usd": "0"
+    }
+  ],
+  "data_sha256": "6768f815a102c3cb2b4929e1a58d32195d01328a9a1bfb4ad8fc860263926c40"
+}

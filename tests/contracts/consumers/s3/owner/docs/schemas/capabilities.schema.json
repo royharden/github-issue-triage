@@ -1,0 +1,72 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "billing_required_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Billing Required Fields",
+      "type": "array"
+    },
+    "bounds_billed_input": {
+      "title": "Bounds Billed Input",
+      "type": "boolean"
+    },
+    "bounds_billed_output": {
+      "title": "Bounds Billed Output",
+      "type": "boolean"
+    },
+    "generate": {
+      "title": "Generate",
+      "type": "boolean"
+    },
+    "image_input": {
+      "title": "Image Input",
+      "type": "boolean"
+    },
+    "input_bound_kind": {
+      "enum": [
+        "count",
+        "documented_bytes",
+        "capacity",
+        "refuse"
+      ],
+      "title": "Input Bound Kind",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "streaming": {
+      "title": "Streaming",
+      "type": "boolean"
+    },
+    "typed_judgment": {
+      "title": "Typed Judgment",
+      "type": "boolean"
+    },
+    "usage_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Usage Fields",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "generate",
+    "typed_judgment",
+    "image_input",
+    "streaming",
+    "usage_fields",
+    "billing_required_fields",
+    "bounds_billed_input",
+    "bounds_billed_output",
+    "input_bound_kind"
+  ],
+  "title": "Capabilities",
+  "type": "object"
+}

@@ -1,0 +1,305 @@
+{
+  "$defs": {
+    "Allocation": {
+      "additionalProperties": false,
+      "properties": {
+        "allocation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Allocation Id",
+          "type": "string"
+        },
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "plan_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Plan Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "allocation_id",
+        "authority_id",
+        "operation_id",
+        "plan_sha256"
+      ],
+      "title": "Allocation",
+      "type": "object"
+    },
+    "BudgetAuthority": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "cap_usd": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Cap Usd",
+          "type": "string"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expires At"
+        },
+        "max_outbound_attempts": {
+          "minimum": 0,
+          "title": "Max Outbound Attempts",
+          "type": "integer"
+        },
+        "run_deadline_utc": {
+          "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+          "title": "Run Deadline Utc",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "scope_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Scope Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "authority_id",
+        "scope_sha256",
+        "cap_usd",
+        "max_outbound_attempts",
+        "run_deadline_utc"
+      ],
+      "title": "BudgetAuthority",
+      "type": "object"
+    },
+    "ChildBound": {
+      "additionalProperties": false,
+      "properties": {
+        "bound_evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Bound Evidence Sha256",
+          "type": "string"
+        },
+        "child_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Child Id",
+          "type": "string"
+        },
+        "conditional": {
+          "title": "Conditional",
+          "type": "boolean"
+        },
+        "fee_maximum_usd": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Fee Maximum Usd",
+          "type": "string"
+        },
+        "input_token_maximum": {
+          "minimum": 0,
+          "title": "Input Token Maximum",
+          "type": "integer"
+        },
+        "max_attempts": {
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "max_repairs": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Repairs",
+          "type": "integer"
+        },
+        "model": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "output_token_maximum": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Output Token Maximum"
+        },
+        "provider_config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Provider Config Sha256",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "request_shape_limit_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Request Shape Limit Sha256",
+          "type": "string"
+        },
+        "reserved_usd_per_attempt": {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Reserved Usd Per Attempt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "child_id",
+        "purpose",
+        "provider_config_sha256",
+        "model",
+        "bound_evidence_sha256",
+        "max_attempts",
+        "max_repairs",
+        "input_token_maximum",
+        "output_token_maximum",
+        "fee_maximum_usd",
+        "reserved_usd_per_attempt",
+        "request_shape_limit_sha256",
+        "conditional"
+      ],
+      "title": "ChildBound",
+      "type": "object"
+    },
+    "OperationPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/$defs/ChildBound"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Children",
+          "type": "array"
+        },
+        "context_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Context Sha256",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "operation_id",
+        "authority_id",
+        "context_sha256",
+        "children"
+      ],
+      "title": "OperationPlan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Schema check for claimed admission, not a durable reservation transaction.",
+  "properties": {
+    "allocation": {
+      "$ref": "#/$defs/Allocation"
+    },
+    "already_dispatched_attempts": {
+      "minimum": 0,
+      "title": "Already Dispatched Attempts",
+      "type": "integer"
+    },
+    "authority": {
+      "$ref": "#/$defs/BudgetAuthority"
+    },
+    "known_spend_usd": {
+      "maxLength": 64,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Known Spend Usd",
+      "type": "string"
+    },
+    "other_held_exposure_usd": {
+      "maxLength": 64,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Other Held Exposure Usd",
+      "type": "string"
+    },
+    "plan": {
+      "$ref": "#/$defs/OperationPlan"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "authority",
+    "plan",
+    "allocation",
+    "known_spend_usd",
+    "other_held_exposure_usd",
+    "already_dispatched_attempts"
+  ],
+  "title": "FundingDeclaration",
+  "type": "object"
+}

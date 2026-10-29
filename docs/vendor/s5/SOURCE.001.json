@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source_project": "changelog-upgrade-advisor",
+  "source_commit": "61c15cd05041c9c9360ff4e727a46f6896dc13c3",
+  "source_tree": "d5fcbc8338e3b7e6285cfe1c69b50c006725a58c",
+  "publication_sha256": "90c14efd8e4bc07ec27415263a4d3b22343cacd7b3a6ca41a5d8741b4719e5df",
+  "helper_publication_sha256": "3edc4be3221d091468abf7ba8b3bc973a57dfcc0c0ee67316ea705fb93bcf7b7",
+  "licence": "MIT",
+  "canonical_source_files": 6,
+  "entries": [
+    {
+      "source_path": "src/changelog_advisor/shared/cited/__init__.py",
+      "destination_path": "src/issue_triage/shared/cited/__init__.py",
+      "source_sha256": "b4de107dfa4bdf5840797e236fd00e23e268268875b3bfecfe39141462106b19",
+      "adapted_sha256": "b4de107dfa4bdf5840797e236fd00e23e268268875b3bfecfe39141462106b19",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/changelog_advisor/shared/cited/models.py",
+      "destination_path": "src/issue_triage/shared/cited/models.py",
+      "source_sha256": "9682555a0d988b2e07dc40ac553ff18dc23c6ff389b72c7d93fd99bc81b2dab1",
+      "adapted_sha256": "9682555a0d988b2e07dc40ac553ff18dc23c6ff389b72c7d93fd99bc81b2dab1",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/changelog_advisor/shared/cited/registry.py",
+      "destination_path": "src/issue_triage/shared/cited/registry.py",
+      "source_sha256": "83277f922b9975ded0b12eb09566278aadaa64f03912e765d7864dedea124d7c",
+      "adapted_sha256": "83277f922b9975ded0b12eb09566278aadaa64f03912e765d7864dedea124d7c",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/changelog_advisor/shared/cited/schema.py",
+      "destination_path": "src/issue_triage/shared/cited/schema.py",
+      "source_sha256": "0ba2c5de1caa81841e738fd15bc126b4f6cceacf62f033974691919187fe6d24",
+      "adapted_sha256": "0ba2c5de1caa81841e738fd15bc126b4f6cceacf62f033974691919187fe6d24",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/changelog_advisor/shared/cited/memory.py",
+      "destination_path": "src/issue_triage/shared/cited/memory.py",
+      "source_sha256": "eb4eee4845ce8fc9a49ab1660e20823020ab389d986f576a06e202855bb6329a",
+      "adapted_sha256": "eb4eee4845ce8fc9a49ab1660e20823020ab389d986f576a06e202855bb6329a",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/changelog_advisor/shared/cited/assessment.py",
+      "destination_path": "src/issue_triage/shared/cited/assessment.py",
+      "source_sha256": "3b9f89a6e69fc4183605f1a89ddb16a38454294284aeb7666e25b5b835092121",
+      "adapted_sha256": "3b9f89a6e69fc4183605f1a89ddb16a38454294284aeb7666e25b5b835092121",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "LICENSE",
+      "destination_path": "src/issue_triage/shared/LICENSE.S5",
+      "source_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adapted_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/cited/test_memory.py",
+      "destination_path": "tests/contracts/consumers/s5/owner/tests/cited/test_memory.py",
+      "source_sha256": "f64f325d93de6ab85a7d87b386c13ec9533f7c94ae4d5e448fe775e15576ee6c",
+      "adapted_sha256": "bc921a005825b7a3d657c6e06d81c8fb15cf308d53d3cdb70303638c4d50c7ec",
+      "adaptation": "consumer namespace mapping only"
+    },
+    {
+      "source_path": "tests/cited/test_memory_detached.py",
+      "destination_path": "tests/contracts/consumers/s5/owner/tests/cited/test_memory_detached.py",
+      "source_sha256": "2c53f43b553ad4f00c8c8ce6932d68fa77a9883f99cdfddab856b08d784160f7",
+      "adapted_sha256": "4279be2ed3591361731cceca03e4d573004d3210c66a55d5fe3f4ff39491d3f6",
+      "adaptation": "actual source root/namespace mapping plus additive import/socket denial and positive guard canaries; original owner/sys.modules guard and outcomes preserved"
+    },
+    {
+      "source_path": "tests/cited/test_models.py",
+      "destination_path": "tests/contracts/consumers/s5/owner/tests/cited/_s5_public_wires.py",
+      "source_sha256": "a2baaff6bc7c744b9892f0545cdd1ef218a8f97cd574c269926686ff37e9322f",
+      "adapted_sha256": "b81a89724dac3a9ec817aea90aced518574422cbe69e2c8aa74b6e6a18eccb2b",
+      "adaptation": "bounded helper prefix original lines1-154, synthetic constants/digest/wire/region/snapshot/domain_wires only; model test assertions/assets not part of runtime conformance grant. No original helper logic changed. Extra trailing blank lines removed for Git whitespace; final LF retained, no helper statement or expected outcome changed."
+    }
+  ]
+}

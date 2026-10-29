@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Sign in{% endblock %}
+{% block content %}<section class="card narrow"><p class="eyebrow">Operator session</p><h1>Review locally.</h1>
+<p>Use the operator credential supplied by your local host. This session permits provisional decisions and dry-run previews.</p>
+<form action="/login" method="post"><label for="credential">Operator credential</label>
+<input type="password" id="credential" name="credential" required maxlength="256" autocomplete="current-password">
+<button>Open review queue</button></form><p class="muted">Issue content cannot authorize actions or change this scope.</p></section>{% endblock %}

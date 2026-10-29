@@ -1,0 +1,123 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "attempt_timeout_s": {
+      "exclusiveMinimum": 0,
+      "title": "Attempt Timeout S",
+      "type": "number"
+    },
+    "max_attempts_total": {
+      "maximum": 3,
+      "minimum": 1,
+      "title": "Max Attempts Total",
+      "type": "integer"
+    },
+    "max_choice_options": {
+      "maximum": 255,
+      "minimum": 1,
+      "title": "Max Choice Options",
+      "type": "integer"
+    },
+    "max_concurrent_operations": {
+      "exclusiveMinimum": 0,
+      "title": "Max Concurrent Operations",
+      "type": "integer"
+    },
+    "max_content_repairs": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Max Content Repairs",
+      "type": "integer"
+    },
+    "max_outbound_attempts": {
+      "minimum": 0,
+      "title": "Max Outbound Attempts",
+      "type": "integer"
+    },
+    "max_questions": {
+      "exclusiveMinimum": 0,
+      "title": "Max Questions",
+      "type": "integer"
+    },
+    "max_request_bytes": {
+      "exclusiveMinimum": 0,
+      "title": "Max Request Bytes",
+      "type": "integer"
+    },
+    "max_response_bytes": {
+      "exclusiveMinimum": 0,
+      "title": "Max Response Bytes",
+      "type": "integer"
+    },
+    "max_state_plus_longest_question_tokens": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max State Plus Longest Question Tokens"
+    },
+    "max_total_input_tokens": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max Total Input Tokens"
+    },
+    "max_total_output_tokens": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max Total Output Tokens"
+    },
+    "operation_deadline_s": {
+      "exclusiveMinimum": 0,
+      "title": "Operation Deadline S",
+      "type": "number"
+    },
+    "run_deadline_utc": {
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT.*Z$",
+      "title": "Run Deadline Utc",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "max_attempts_total",
+    "max_content_repairs",
+    "operation_deadline_s",
+    "attempt_timeout_s",
+    "run_deadline_utc",
+    "max_outbound_attempts",
+    "max_concurrent_operations",
+    "max_request_bytes",
+    "max_response_bytes",
+    "max_questions",
+    "max_choice_options"
+  ],
+  "title": "Limits",
+  "type": "object"
+}

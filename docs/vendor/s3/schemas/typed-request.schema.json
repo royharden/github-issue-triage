@@ -1,0 +1,317 @@
+{
+  "$defs": {
+    "ChoiceSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "object"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "maxProperties": 255,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "title": "Criteria",
+          "type": "object"
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "choice",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions",
+        "criteria"
+      ],
+      "title": "ChoiceSpec",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "NoulCriteria": {
+      "additionalProperties": false,
+      "properties": {
+        "false": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "False"
+        },
+        "true": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "True"
+        }
+      },
+      "title": "NoulCriteria",
+      "type": "object"
+    },
+    "NoulSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NoulCriteria"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "noul",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions"
+      ],
+      "title": "NoulSpec",
+      "type": "object"
+    },
+    "ScoreSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "object"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/JsonValue"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "maxItems": 10,
+          "minItems": 2,
+          "title": "Criteria",
+          "type": "array"
+        },
+        "instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Instructions"
+        },
+        "type": {
+          "const": "score",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "instructions",
+        "criteria"
+      ],
+      "title": "ScoreSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "const": "typed_judgment",
+      "title": "Kind",
+      "type": "string"
+    },
+    "model": {
+      "maxLength": 255,
+      "minLength": 1,
+      "title": "Model",
+      "type": "string"
+    },
+    "questions": {
+      "additionalProperties": {
+        "discriminator": {
+          "mapping": {
+            "choice": "#/$defs/ChoiceSpec",
+            "noul": "#/$defs/NoulSpec",
+            "score": "#/$defs/ScoreSpec"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/ChoiceSpec"
+          },
+          {
+            "$ref": "#/$defs/NoulSpec"
+          },
+          {
+            "$ref": "#/$defs/ScoreSpec"
+          }
+        ]
+      },
+      "maxProperties": 256,
+      "minProperties": 1,
+      "propertyNames": {
+        "maxLength": 255,
+        "minLength": 1
+      },
+      "title": "Questions",
+      "type": "object"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "state": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      ],
+      "title": "State"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "model",
+    "state",
+    "questions"
+  ],
+  "title": "TypedJudgmentRequest",
+  "type": "object"
+}

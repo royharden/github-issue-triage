@@ -1,0 +1,238 @@
+{
+  "$defs": {
+    "ImagePart": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "exclusiveMinimum": 0,
+          "title": "Byte Length",
+          "type": "integer"
+        },
+        "content_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Sha256",
+          "type": "string"
+        },
+        "decoded_height": {
+          "exclusiveMinimum": 0,
+          "title": "Decoded Height",
+          "type": "integer"
+        },
+        "decoded_width": {
+          "exclusiveMinimum": 0,
+          "title": "Decoded Width",
+          "type": "integer"
+        },
+        "detail": {
+          "enum": [
+            "low",
+            "high",
+            "auto"
+          ],
+          "title": "Detail",
+          "type": "string"
+        },
+        "execution_ref": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Execution Ref",
+          "type": "string"
+        },
+        "media_type": {
+          "enum": [
+            "image/png",
+            "image/jpeg"
+          ],
+          "title": "Media Type",
+          "type": "string"
+        },
+        "rendition_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Rendition Sha256",
+          "type": "string"
+        },
+        "source_generation": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Source Generation",
+          "type": "string"
+        },
+        "transform_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Transform Sha256",
+          "type": "string"
+        },
+        "type": {
+          "const": "local_image",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "execution_ref",
+        "content_sha256",
+        "media_type",
+        "byte_length",
+        "decoded_width",
+        "decoded_height",
+        "rendition_sha256",
+        "source_generation",
+        "transform_sha256",
+        "detail"
+      ],
+      "title": "ImagePart",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "Message": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "local_image": "#/$defs/ImagePart",
+                "text": "#/$defs/TextPart"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TextPart"
+              },
+              {
+                "$ref": "#/$defs/ImagePart"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Content",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "system",
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "content"
+      ],
+      "title": "Message",
+      "type": "object"
+    },
+    "TextPart": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "type": {
+          "const": "text",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "title": "TextPart",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "const": "generate",
+      "title": "Kind",
+      "type": "string"
+    },
+    "max_output_tokens": {
+      "exclusiveMinimum": 0,
+      "title": "Max Output Tokens",
+      "type": "integer"
+    },
+    "messages": {
+      "items": {
+        "$ref": "#/$defs/Message"
+      },
+      "minItems": 1,
+      "title": "Messages",
+      "type": "array"
+    },
+    "model": {
+      "maxLength": 255,
+      "minLength": 1,
+      "title": "Model",
+      "type": "string"
+    },
+    "reasoning_effort": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reasoning Effort"
+    },
+    "schema": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Schema"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "stream": {
+      "title": "Stream",
+      "type": "boolean"
+    },
+    "temperature": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Temperature"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "model",
+    "messages",
+    "max_output_tokens",
+    "stream"
+  ],
+  "title": "GenerateRequest",
+  "type": "object"
+}

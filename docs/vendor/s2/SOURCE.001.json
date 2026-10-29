@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "source_project": "receipt-field-review",
+  "source_commit": "249262839c4247ff37cc5a75c6a89a422738c759",
+  "source_tree": "e60e8ba5efef185a6706c5d266ce3a1ccad5c553",
+  "licence": "MIT",
+  "canonical_module_schema_readme_files": 11,
+  "published_synthetic_conformance_files": 9,
+  "entries": [
+    {
+      "source_path": "src/rfr/shared/evalkit/README.md",
+      "destination_path": "src/issue_triage/shared/evalkit/README.md",
+      "source_sha256": "1308c679caa5413229ba41de0e6fc4f9cdfd8d76fcb66c0cb1aa4597d2dade94",
+      "adapted_sha256": "1308c679caa5413229ba41de0e6fc4f9cdfd8d76fcb66c0cb1aa4597d2dade94",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/__init__.py",
+      "destination_path": "src/issue_triage/shared/evalkit/__init__.py",
+      "source_sha256": "3017cebcf1f80d410a61712cd8207c1803e09954936ce33238d886760683843e",
+      "adapted_sha256": "3017cebcf1f80d410a61712cd8207c1803e09954936ce33238d886760683843e",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/corpus.py",
+      "destination_path": "src/issue_triage/shared/evalkit/corpus.py",
+      "source_sha256": "427ade409f4fb83b59a2d9952c890cb830096af948e1dc9d393a8aef47c23fa0",
+      "adapted_sha256": "427ade409f4fb83b59a2d9952c890cb830096af948e1dc9d393a8aef47c23fa0",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/identity.py",
+      "destination_path": "src/issue_triage/shared/evalkit/identity.py",
+      "source_sha256": "5897c07d4b0f5d55dd8fee8cb74a325caaebc03b9e70bbf9c426c431d968f1b2",
+      "adapted_sha256": "5897c07d4b0f5d55dd8fee8cb74a325caaebc03b9e70bbf9c426c431d968f1b2",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/interfaces.py",
+      "destination_path": "src/issue_triage/shared/evalkit/interfaces.py",
+      "source_sha256": "d23bc8be5188a968388272580b259ad4af4b1a4cbf393be52d7933514235ed9d",
+      "adapted_sha256": "d23bc8be5188a968388272580b259ad4af4b1a4cbf393be52d7933514235ed9d",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/models.py",
+      "destination_path": "src/issue_triage/shared/evalkit/models.py",
+      "source_sha256": "b18613383987a24569e7a9a133b2c212d858c2cf9ee147720b350c06126596c4",
+      "adapted_sha256": "b18613383987a24569e7a9a133b2c212d858c2cf9ee147720b350c06126596c4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/reporting.py",
+      "destination_path": "src/issue_triage/shared/evalkit/reporting.py",
+      "source_sha256": "96d439870fe13d5c2ff5064d34eeb66fd5a96cf86fa5e5983ba243a6279aa283",
+      "adapted_sha256": "96d439870fe13d5c2ff5064d34eeb66fd5a96cf86fa5e5983ba243a6279aa283",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/resampling.py",
+      "destination_path": "src/issue_triage/shared/evalkit/resampling.py",
+      "source_sha256": "005c21b6d9f113db22132f0a660c3a2713e5aeaffb4dbb3c4c5349d66c194619",
+      "adapted_sha256": "005c21b6d9f113db22132f0a660c3a2713e5aeaffb4dbb3c4c5349d66c194619",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/runner.py",
+      "destination_path": "src/issue_triage/shared/evalkit/runner.py",
+      "source_sha256": "b3a9078cf3265d750296907572dfeb66de780c01028b715cfdafb39dbad7bccb",
+      "adapted_sha256": "b3a9078cf3265d750296907572dfeb66de780c01028b715cfdafb39dbad7bccb",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/schema.json",
+      "destination_path": "src/issue_triage/shared/evalkit/schema.json",
+      "source_sha256": "b44b9f4cea1b90d6524ddf9aa56327667a92340810b19000bb8d47702695ffb7",
+      "adapted_sha256": "b44b9f4cea1b90d6524ddf9aa56327667a92340810b19000bb8d47702695ffb7",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/rfr/shared/evalkit/statistics.py",
+      "destination_path": "src/issue_triage/shared/evalkit/statistics.py",
+      "source_sha256": "9e9ec5e9ba86489c8938a87bd064debbedc143126952959729ab46fd624784dc",
+      "adapted_sha256": "9e9ec5e9ba86489c8938a87bd064debbedc143126952959729ab46fd624784dc",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "LICENSE",
+      "destination_path": "src/issue_triage/shared/LICENSE.S2",
+      "source_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adapted_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/evalkit/conftest.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/conftest.py",
+      "source_sha256": "fa889c24ed0c5599792de4f9a46dee7d09d8e9261ead18804bc1175b32507bff",
+      "adapted_sha256": "fa889c24ed0c5599792de4f9a46dee7d09d8e9261ead18804bc1175b32507bff",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_corpus.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_corpus.py",
+      "source_sha256": "c6127c483acb8c6fc25887bd677243b5297e275941f4fed461d659b6bfad0d18",
+      "adapted_sha256": "f7d3d833bda237e009a8d164c82a4ea60745031b3d00a53a3c917c26165ba1e6",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_evalkit_detached.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_evalkit_detached.py",
+      "source_sha256": "9ce522799442e9acdc1a17b946ce4601205094df146725d27e20ea1eae23bcf1",
+      "adapted_sha256": "cc648ed7b57d2016a12a2e2911654a82d70e0e36e0d0bfe47450095e1ef0f8c7",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_evalkit_moved_suite.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_evalkit_moved_suite.py",
+      "source_sha256": "1ea3f864073ed745001fe00c9996f50d0f2eaaa665d1a5bdb92f6a4a6b84f2ea",
+      "adapted_sha256": "91e3a2677ea18d1b100cb3ac546c4ff2c4496f83877b6a9285611229c45bd47a",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_heldout.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_heldout.py",
+      "source_sha256": "e80a02fc8e1ff5e81b007de3d87534eb36b0001dadf2251a3de0a246360e0528",
+      "adapted_sha256": "728756aaa052d3b7dca060ec18157dad9180b3e408b844d26fd03ee71542af78",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_reporting.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_reporting.py",
+      "source_sha256": "a5b0a537c7b0593fa7bab210d8e9e79c9aba6d462dfb3895f211d30293aa44b9",
+      "adapted_sha256": "d941766b68eb1e3fc9e6da658186e55c5768af547b74976eae8c1ea5cc2217af",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_resampling.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_resampling.py",
+      "source_sha256": "64739c9b0b274542717a19285dd27968442d782979f138345c4e113861d54cef",
+      "adapted_sha256": "9007f358e9b68f8b71b4e44ec0e26fe812e2631fc9a48be92cf6268b8d9affd8",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_runner.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_runner.py",
+      "source_sha256": "365b553de35064978cb488049627cd09cf9de2b4c3adc59502c97244e8877a03",
+      "adapted_sha256": "99d10c24dfe2acdb8c5f1ee8a3dae10b1ec064be760f8f9bd2e554b094c7bd76",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    },
+    {
+      "source_path": "tests/evalkit/test_statistics.py",
+      "destination_path": "tests/contracts/consumers/s2/owner/tests/evalkit/test_statistics.py",
+      "source_sha256": "c786947db47453f532a63894679d7b57886e4a2a5bdd3db6e03e582ae343ab65",
+      "adapted_sha256": "1c89bfea3164abc582e576274792d7d5eea0f3c2c5b7b6e5d76f28a3b16f0be0",
+      "adaptation": "test import/root/denied namespace mapping only; semantic controls unchanged"
+    }
+  ],
+  "limits": "Generic canonical math/runner/wires only. No real corpus, domain scorer, human/rights trust, durable independent heldout controller/history, actual provider/cost/quality or product acceptance follows from vendoring."
+}

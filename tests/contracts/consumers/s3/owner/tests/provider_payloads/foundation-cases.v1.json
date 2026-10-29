@@ -1,0 +1,875 @@
+{
+  "schema_version": 1,
+  "origin": "authored_synthetic",
+  "license": "MIT",
+  "real_provider_observations": false,
+  "quality_benchmark_gold": false,
+  "cases": [
+    {
+      "id": "F01",
+      "flavor": "openai_responses",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the word cobalt in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "cobalt"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "status": "completed",
+        "output": [
+          {
+            "type": "message",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "{\"answer\":\"cobalt\"}"
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": 7,
+          "output_tokens_details": {
+            "reasoning_tokens": 3
+          }
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": {
+        "answer": "cobalt"
+      },
+      "what_bug_this_catches": "Explicit flavor-specific structured output must roundtrip without hidden tool calls."
+    },
+    {
+      "id": "F02",
+      "flavor": "openai_chat",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the parity of 8 in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "even"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "message": {
+              "content": "{\"answer\":\"even\"}"
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 100,
+          "completion_tokens": 7
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": {
+        "answer": "even"
+      },
+      "what_bug_this_catches": "Explicit flavor-specific structured output must roundtrip without hidden tool calls."
+    },
+    {
+      "id": "F03",
+      "flavor": "anthropic",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the word amber in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "amber"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"answer\":\"amber\"}"
+          }
+        ],
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 100,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 7
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": {
+        "answer": "amber"
+      },
+      "what_bug_this_catches": "Explicit flavor-specific structured output must roundtrip without hidden tool calls."
+    },
+    {
+      "id": "F04",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "A synthetic signal is present.",
+        "questions": {
+          "signal": {
+            "type": "noul",
+            "instructions": "Is a signal present?",
+            "criteria": {
+              "true": {
+                "meaning": "present"
+              },
+              "false": [
+                "absent"
+              ]
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "signal": {
+            "type": "noul",
+            "noul": 0.8
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Noul description map remains structured and no confidence is invented."
+    },
+    {
+      "id": "F05",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "A synthetic category sample.",
+        "questions": {
+          "category": {
+            "type": "choice",
+            "instructions": "Select a category.",
+            "criteria": {
+              "a": null,
+              "b": "B",
+              "c": [
+                "C"
+              ]
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "category": {
+            "type": "choice",
+            "choice": "a",
+            "probabilities": {
+              "a": 0.6,
+              "b": 0.3,
+              "c": 0.1
+            },
+            "confidence": 0.6
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Choice order/full distribution survives one packed request."
+    },
+    {
+      "id": "F06",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "An authored uncertain pair.",
+        "questions": {
+          "relation": {
+            "type": "score",
+            "instructions": "Rate relation.",
+            "criteria": [
+              "different",
+              "same"
+            ]
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "relation": {
+            "type": "score",
+            "score": 0.25,
+            "legend": {
+              "0": "different",
+              "1": "same"
+            },
+            "probabilities": {
+              "0": 0.75,
+              "1": 0.25
+            },
+            "confidence": 0.5
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Two-level fractional Score is not rounded to an integer."
+    },
+    {
+      "id": "F07",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "An authored five-level maximum.",
+        "questions": {
+          "level": {
+            "type": "score",
+            "instructions": "Rate level.",
+            "criteria": [
+              "zero",
+              "one",
+              "two",
+              "three",
+              "four"
+            ]
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "level": {
+            "type": "score",
+            "score": 4.0,
+            "legend": {
+              "0": "zero",
+              "1": "one",
+              "2": "two",
+              "3": "three",
+              "4": "four"
+            },
+            "probabilities": {
+              "0": 0.0,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 1.0
+            },
+            "confidence": 1.0
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Generic Score level4 is not clamped to routing tier3."
+    },
+    {
+      "id": "F08",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "An authored structured rubric.",
+        "questions": {
+          "relation": {
+            "type": "score",
+            "instructions": {
+              "task": "Rate relation."
+            },
+            "criteria": [
+              "unrelated",
+              {
+                "description": "related"
+              },
+              [
+                "same size"
+              ]
+            ]
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "relation": {
+            "type": "score",
+            "score": 1.6,
+            "legend": {
+              "0": "unrelated",
+              "1": "related",
+              "2": "same size"
+            },
+            "probabilities": {
+              "0": 0.1,
+              "1": 0.2,
+              "2": 0.7
+            },
+            "confidence": 0.8
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "String response legend is bound to original structured criterion hash and indices."
+    },
+    {
+      "id": "F09",
+      "flavor": "typesafe",
+      "request": {
+        "schema_version": 1,
+        "kind": "typed_judgment",
+        "model": "fixture-model",
+        "state": "Thirty authored conditions in one state.",
+        "questions": {
+          "q00": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 0 present?"
+          },
+          "q01": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 1 present?"
+          },
+          "q02": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 2 present?"
+          },
+          "q03": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 3 present?"
+          },
+          "q04": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 4 present?"
+          },
+          "q05": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 5 present?"
+          },
+          "q06": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 6 present?"
+          },
+          "q07": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 7 present?"
+          },
+          "q08": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 8 present?"
+          },
+          "q09": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 9 present?"
+          },
+          "q10": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 10 present?"
+          },
+          "q11": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 11 present?"
+          },
+          "q12": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 12 present?"
+          },
+          "q13": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 13 present?"
+          },
+          "q14": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 14 present?"
+          },
+          "q15": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 15 present?"
+          },
+          "q16": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 16 present?"
+          },
+          "q17": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 17 present?"
+          },
+          "q18": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 18 present?"
+          },
+          "q19": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 19 present?"
+          },
+          "q20": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 20 present?"
+          },
+          "q21": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 21 present?"
+          },
+          "q22": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 22 present?"
+          },
+          "q23": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 23 present?"
+          },
+          "q24": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 24 present?"
+          },
+          "q25": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 25 present?"
+          },
+          "q26": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 26 present?"
+          },
+          "q27": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 27 present?"
+          },
+          "q28": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 28 present?"
+          },
+          "q29": {
+            "type": "noul",
+            "instructions": "Is synthetic condition 29 present?"
+          }
+        }
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "answers": {
+          "q00": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q01": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q02": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q03": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q04": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q05": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q06": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q07": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q08": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q09": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q10": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q11": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q12": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q13": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q14": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q15": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q16": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q17": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q18": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q19": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q20": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q21": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q22": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q23": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q24": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q25": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q26": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q27": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q28": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "q29": {
+            "type": "noul",
+            "noul": 0.8
+          }
+        },
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null
+        }
+      },
+      "expected_status": "ok",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Thirty IDs are one dispatch, never hidden per-question fanout."
+    },
+    {
+      "id": "F10",
+      "flavor": "openai_responses",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the word silver in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "silver"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "status": "completed",
+        "output": [
+          {
+            "type": "message",
+            "content": [
+              {
+                "type": "refusal",
+                "refusal": "Authored synthetic refusal."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": 7,
+          "output_tokens_details": {
+            "reasoning_tokens": 3
+          }
+        }
+      },
+      "expected_status": "refused",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Unavailable/refused/incomplete response never becomes usable schema output or guessed reported model."
+    },
+    {
+      "id": "F11",
+      "flavor": "openai_responses",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the word silver in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "silver"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "model": "fixture-model-reported",
+        "status": "incomplete",
+        "output": [
+          {
+            "type": "message",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "{\"answer\":\"silver\"}"
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": null,
+          "output_tokens_details": {
+            "reasoning_tokens": 3
+          }
+        }
+      },
+      "expected_status": "invalid_output",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Unavailable/refused/incomplete response never becomes usable schema output or guessed reported model."
+    },
+    {
+      "id": "F12",
+      "flavor": "openai_responses",
+      "request": {
+        "schema_version": 1,
+        "kind": "generate",
+        "model": "fixture-model",
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Return the word silver in answer."
+              }
+            ]
+          }
+        ],
+        "schema": {
+          "type": "object",
+          "properties": {
+            "answer": {
+              "type": "string",
+              "enum": [
+                "silver"
+              ]
+            }
+          },
+          "required": [
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        "max_output_tokens": 32,
+        "stream": false
+      },
+      "response": {
+        "status": "completed",
+        "output": [
+          {
+            "type": "message",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "{\"answer\":\"silver\"}"
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 100,
+          "output_tokens": 7,
+          "output_tokens_details": {
+            "reasoning_tokens": 3
+          }
+        }
+      },
+      "expected_status": "invalid_output",
+      "expected_parsed": null,
+      "what_bug_this_catches": "Unavailable/refused/incomplete response never becomes usable schema output or guessed reported model."
+    }
+  ]
+}

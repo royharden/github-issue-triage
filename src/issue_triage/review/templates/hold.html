@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Issue held{% endblock %}
+{% block content %}<a href="/">← Review queue</a><p class="eyebrow">{{ issue }}</p><h1>Needs human review</h1>
+<section class="card"><p>The local workflow did not produce a reviewable proposal. No decision or preview action is available.</p>
+<ul>{% for reason in reasons %}<li>{{ reason }}</li>{% endfor %}</ul></section>{% endblock %}

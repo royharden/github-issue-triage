@@ -1,0 +1,14 @@
+# Original MIT synthetic label context, not an owner taxonomy.
+version = "s6-label-map/1"
+[issue_type]
+bug = "type:bug"
+feature = "type:feature"
+question = "type:question"
+needs_repro = "status:needs-repro"
+likely_invalid = "status:likely-invalid"
+unclear = "status:needs-review"
+[priority]
+0 = "priority:critical"
+1 = "priority:high"
+2 = "priority:normal"
+3 = "priority:low"

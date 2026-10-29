@@ -1,0 +1,24 @@
+{
+  "source_kind": "fixture_inventory",
+  "label_origin": "agent_provisional_original_local",
+  "issue": {
+    "key": {"installation_id": 601, "repository_id": 602, "issue_number": 1, "owner": "local-example", "repository": "original-triage-demo"},
+    "title": "Bug in phantom_widget()",
+    "body": "Steps: open the chart. Expected: a chart. Actual: an unavailable call. Please check the documented version.",
+    "updated_at": "2026-10-15T04:00:00Z",
+    "author_id": 603,
+    "author_login": "example-author"
+  },
+  "files": [{"path": "chart.py", "content": "def draw_chart():\n    return 7\n"}],
+  "labels": {
+    "repository_id": 602,
+    "labels": [{"id": 1, "name": "bug", "archival_state": "active"}, {"id": 2, "name": "needs-info", "archival_state": "active"}],
+    "captured_at": "2026-10-15T04:00:01Z",
+    "page_sha256": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
+  },
+  "label_mapping": {
+    "type_labels": {"bug": ["bug"], "likely_invalid": ["needs-info"], "needs_repro": ["needs-info"], "feature": [], "question": [], "unclear": []},
+    "priority_labels": {"0": [], "1": [], "2": [], "3": []}
+  },
+  "captured_at": "2026-10-15T04:00:01Z"
+}

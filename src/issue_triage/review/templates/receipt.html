@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Local receipt{% endblock %}
+{% block content %}<p class="eyebrow">Saved locally</p><h1>Rehearsal receipt</h1><p>No remote action was sent.</p>
+<a href="/issue/{{ issue }}">Return to current issue {{ issue }}</a><section class="card"><pre>{{ result }}</pre></section>{% endblock %}

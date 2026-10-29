@@ -1,0 +1,259 @@
+{
+  "component": "S2 rulings",
+  "source_commit": "455d73c6efe283fdf3919267532de7ad5d39924b",
+  "source_tree": "100dc262ed0bd53d52e4a508cfc22aabecbb5aaa",
+  "source_publication_sha256": "afe399129b7f74fcf4c3f540c5945da3875dbd8618a7b345fdff382d4a014132",
+  "actual_D6_grant_receipt_sha256": "96b4a5d6f5a99a7439231405c80d91b34dfa61369edfd7bfc7fb3c9a95242bdc",
+  "assignment_sha256": "9980931df34a2724e1160ac5ffa43753a3414f8dc165e56a6cca801b901d8a46",
+  "license": "MIT",
+  "entries": [
+    {
+      "source_path": "src/rfr/shared/rulings/__init__.py",
+      "source_sha256": "cc32949ed13b7ea5d77577079441d19e3cfd9b8bfe074db87dff056de3d88a6d",
+      "source_git_blob": "15bccaada7b32d1933ac59d9113a5c215de1b0d6",
+      "consumer_path": "src/issue_triage/shared/rulings/__init__.py",
+      "consumer_sha256": "cc32949ed13b7ea5d77577079441d19e3cfd9b8bfe074db87dff056de3d88a6d",
+      "bytes": 85,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/models.py",
+      "source_sha256": "4ab1b6edf1e5009d7ffe9559dae480471df7843b8216b7deb8ab961ce47a3b4c",
+      "source_git_blob": "c887635f97589fe5ed8ca761b1e69343d490e43d",
+      "consumer_path": "src/issue_triage/shared/rulings/models.py",
+      "consumer_sha256": "4ab1b6edf1e5009d7ffe9559dae480471df7843b8216b7deb8ab961ce47a3b4c",
+      "bytes": 7163,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/identity.py",
+      "source_sha256": "da5df25714f8bbc4b8fe7a1f2ee4d780f1259d7c593164c4bd658234262673c0",
+      "source_git_blob": "97205db3893fae3a52110c678c326e0dd1c73a49",
+      "consumer_path": "src/issue_triage/shared/rulings/identity.py",
+      "consumer_sha256": "da5df25714f8bbc4b8fe7a1f2ee4d780f1259d7c593164c4bd658234262673c0",
+      "bytes": 1836,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/interfaces.py",
+      "source_sha256": "785cd755d8f51b8bd8432d5f8b6712a2fa95f4187f610928ddcbe15e5e0ede6a",
+      "source_git_blob": "176e3c01ca5984ef185e4bd8096947df156de578",
+      "consumer_path": "src/issue_triage/shared/rulings/interfaces.py",
+      "consumer_sha256": "785cd755d8f51b8bd8432d5f8b6712a2fa95f4187f610928ddcbe15e5e0ede6a",
+      "bytes": 925,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/store.py",
+      "source_sha256": "8586552e099bf1eecc8bb52c5b2a51bf2ca0880a26186587034b63b910402b57",
+      "source_git_blob": "cee844ddfb7cd2b48e2ef1288de2e8887f3d5df7",
+      "consumer_path": "src/issue_triage/shared/rulings/store.py",
+      "consumer_sha256": "8586552e099bf1eecc8bb52c5b2a51bf2ca0880a26186587034b63b910402b57",
+      "bytes": 15394,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/projection.py",
+      "source_sha256": "b7d76d4f5b50f56a3973eb6c49fa77130b398f38461d74040d2866630a5381e7",
+      "source_git_blob": "ab208c1a66af67e67352dd9ffb0ebca1c818a3e0",
+      "consumer_path": "src/issue_triage/shared/rulings/projection.py",
+      "consumer_sha256": "b7d76d4f5b50f56a3973eb6c49fa77130b398f38461d74040d2866630a5381e7",
+      "bytes": 6162,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/README.md",
+      "source_sha256": "c5502679923c0da5c92f5890c7b1a9e52dc9aee45250cd67c501b365351685f0",
+      "source_git_blob": "7ec932d25a5376f65a1aa557aab8a089150ec28d",
+      "consumer_path": "src/issue_triage/shared/rulings/README.md",
+      "consumer_sha256": "c5502679923c0da5c92f5890c7b1a9e52dc9aee45250cd67c501b365351685f0",
+      "bytes": 3441,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "src/rfr/shared/rulings/schema.json",
+      "source_sha256": "7c2397d79846fbb3ca51e95dd50eda5174f9fe2d52b0640cd79bf356242b124e",
+      "source_git_blob": "f2df8d43127224feff49228f1178aa1d412aa8c7",
+      "consumer_path": "src/issue_triage/shared/rulings/schema.json",
+      "consumer_sha256": "7c2397d79846fbb3ca51e95dd50eda5174f9fe2d52b0640cd79bf356242b124e",
+      "bytes": 35891,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "LICENSE",
+      "source_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "source_git_blob": "024bbc5e5a3503b3f719ccb4e68c773e4d840e2a",
+      "consumer_path": "src/issue_triage/shared/LICENSE.S2-RULINGS",
+      "consumer_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "bytes": 1067,
+      "mapping": "byte-identical"
+    },
+    {
+      "source_path": "tests/rulings/conftest.py",
+      "source_sha256": "e696b3502669e716e9f7b0d7837328e89a225ee050ebb2a3d760213b12bb99d0",
+      "source_git_blob": "cf6de635c8545a925a2061eb5f69fd3c2140c594",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/conftest.py",
+      "consumer_sha256": "e696b3502669e716e9f7b0d7837328e89a225ee050ebb2a3d760213b12bb99d0",
+      "bytes": 412,
+      "changes": [],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/synthetic_intents.py",
+      "source_sha256": "7a3b4b61da3ebbcad9f9977f88eb3c3f9602c580c872a20bcd0370db68bf7ceb",
+      "source_git_blob": "c1c4452aaba37c392782d29040a51d3a18f2cd27",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/_s2_rulings_synthetic_intents.py",
+      "consumer_sha256": "9ebca0fff56ab18174835177f49d88cfdcfcff96107d947b4ce96cc8cee458bc",
+      "bytes": 3034,
+      "changes": [
+        {
+          "old": "rfr.shared.rulings",
+          "new": "issue_triage.shared.rulings",
+          "count": 2,
+          "reason": "canonical consumer import namespace"
+        }
+      ],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/test_store.py",
+      "source_sha256": "41e3c3b21bee46c60e82330b08585700090a307579a55143948660959784f94f",
+      "source_git_blob": "b677ba39acd693546c5d2e4e1f9f9884a925c01a",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/test_store.py",
+      "consumer_sha256": "4987955e0b01d4a255400729be8ccdfff05f1ee09e3b614ca41715117bde2bdd",
+      "bytes": 11483,
+      "changes": [
+        {
+          "old": "rfr.shared.rulings",
+          "new": "issue_triage.shared.rulings",
+          "count": 3,
+          "reason": "canonical consumer import namespace"
+        },
+        {
+          "old": "from synthetic_intents import",
+          "new": "from _s2_rulings_synthetic_intents import",
+          "count": 1,
+          "reason": "unique local helper module"
+        }
+      ],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/test_projection.py",
+      "source_sha256": "b73d088b612bfa3f2e58aa624685f6fa999fae9f4ae3eea7212e1d6bdc9ca5fb",
+      "source_git_blob": "1a4b90202b0daf86df65de49ef635e19f926a053",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/test_projection.py",
+      "consumer_sha256": "a1fb5317e6368f2664beb3ac15a4d9718907e209e0fac4d6df0f624e19abd081",
+      "bytes": 4756,
+      "changes": [
+        {
+          "old": "rfr.shared.rulings",
+          "new": "issue_triage.shared.rulings",
+          "count": 2,
+          "reason": "canonical consumer import namespace"
+        },
+        {
+          "old": "from synthetic_intents import",
+          "new": "from _s2_rulings_synthetic_intents import",
+          "count": 1,
+          "reason": "unique local helper module"
+        }
+      ],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/test_paths.py",
+      "source_sha256": "840d302d78c7e6fe6d05b71ff0460de769c529cb29a6b9a6f529e99d7acd922c",
+      "source_git_blob": "6f2eef06a97f8ea8fb2ae691ae778c5a53cfb2e6",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/test_paths.py",
+      "consumer_sha256": "af2d5cd789f939908dcfcd4d4c2f873d68ed3c7ddd69d8dacfbb172eb68be94b",
+      "bytes": 3466,
+      "changes": [
+        {
+          "old": "rfr.shared.rulings",
+          "new": "issue_triage.shared.rulings",
+          "count": 3,
+          "reason": "canonical consumer import namespace"
+        }
+      ],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/test_processes.py",
+      "source_sha256": "57efdf9b9fd4adb10fe33c3a2a7a0dedd3899fed1fbe356dc1f0d51e829519e5",
+      "source_git_blob": "e68b16f68ccebe23e42f3d948b37a4e37bc1d238",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/test_processes.py",
+      "consumer_sha256": "26b1aeb4f1f3fb0fb647d600fb2c563a8a9ddbec369772c90f9499155a61960f",
+      "bytes": 7114,
+      "changes": [
+        {
+          "old": "rfr.shared.rulings",
+          "new": "issue_triage.shared.rulings",
+          "count": 4,
+          "reason": "canonical consumer import namespace"
+        },
+        {
+          "old": "from synthetic_intents import",
+          "new": "from _s2_rulings_synthetic_intents import",
+          "count": 1,
+          "reason": "unique local helper module"
+        },
+        {
+          "old": "Path(__file__).resolve().parents[2]",
+          "new": "Path(__file__).resolve().parents[5]",
+          "count": 1,
+          "reason": "consumer repo root at relocated test depth"
+        }
+      ],
+      "original_assertions_removed": 0
+    },
+    {
+      "source_path": "tests/rulings/test_detached.py",
+      "source_sha256": "85aa03bb0b3305d4697829e1c22873f223452d1da75446650b86a43de57766a3",
+      "source_git_blob": "8e7c4cadb30208f77077bd068deb5291df606af1",
+      "consumer_path": "tests/contracts/consumers/s2_rulings/owner/test_detached.py",
+      "consumer_sha256": "9121c581be42d966095ad43b81d00e69c61fa2202667b93978b17f09783ecc03",
+      "bytes": 3224,
+      "changes": [
+        {
+          "old": "from synthetic_intents import",
+          "new": "from _s2_rulings_synthetic_intents import",
+          "count": 1,
+          "reason": "unique local helper module"
+        },
+        {
+          "old": "Path(__file__).resolve().parents[2]",
+          "new": "Path(__file__).resolve().parents[5]",
+          "count": 1,
+          "reason": "consumer repo root at relocated test depth"
+        },
+        {
+          "old": "src/rfr/shared/rulings",
+          "new": "src/issue_triage/shared/rulings",
+          "count": 1,
+          "reason": "actual consumer runtime copy root"
+        },
+        {
+          "old": "{{\"rfr\",\"openai\",\"PIL\",\"pytesseract\",\"entity_matcher\",\"fastapi\"}}",
+          "new": "{{\"rfr\",\"issue_triage\",\"openai\",\"typesafe\",\"typesafeai\",\"PIL\",\"pytesseract\",\"entity_matcher\",\"fastapi\",\"httpx\",\"requests\",\"aiohttp\"}}",
+          "count": 1,
+          "reason": "add actual consumer and provider import denial"
+        },
+        {
+          "old": "assert not any(name==\"rfr\" or name.startswith(\"rfr.\") for name in sys.modules)",
+          "new": "for forbidden in (\"issue_triage\", \"openai\", \"typesafe\"):\n    try: importlib.import_module(forbidden)\n    except RuntimeError: pass\n    else: raise AssertionError(\"consumer/provider import canary failed\")\ntry: socket.create_connection((\"synthetic.invalid\",443))\nexcept RuntimeError: pass\nelse: raise AssertionError(\"network denial canary failed\")\nassert not any(name==\"rfr\" or name.startswith(\"rfr.\") for name in sys.modules)",
+          "count": 1,
+          "reason": "additional positive import/network denial canaries; original assertions retained"
+        }
+      ],
+      "original_assertions_removed": 0
+    }
+  ],
+  "provisional_limits": [
+    "No source discovery or human authentication",
+    "No S4 graph or lifecycle/privacy adapter",
+    "Windows local owned temporary filesystem controls only; no POSIX/power-loss/hostile-FS proof",
+    "No source hash is decision authorization",
+    "No product or release acceptance"
+  ]
+}

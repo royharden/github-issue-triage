@@ -1,0 +1,645 @@
+{
+  "$defs": {
+    "ChoiceAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "choice": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Choice",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "probabilities": {
+          "additionalProperties": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "maxProperties": 255,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "title": "Probabilities",
+          "type": "object"
+        },
+        "type": {
+          "const": "choice",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "choice",
+        "probabilities",
+        "confidence"
+      ],
+      "title": "ChoiceAnswer",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "NormalizedUsage": {
+      "additionalProperties": false,
+      "properties": {
+        "cache_read_input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Read Input Tokens"
+        },
+        "cache_write_input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Write Input Tokens"
+        },
+        "input_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Tokens"
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Tokens"
+        },
+        "reasoning_output_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Output Tokens"
+        }
+      },
+      "title": "NormalizedUsage",
+      "type": "object"
+    },
+    "NoulAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "noul": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Noul",
+          "type": "number"
+        },
+        "type": {
+          "const": "noul",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "noul"
+      ],
+      "title": "NoulAnswer",
+      "type": "object"
+    },
+    "SafeError": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "auth",
+            "missing_key",
+            "unsupported_capability",
+            "invalid_output",
+            "price_unknown",
+            "budget_rejected",
+            "attempt_limit",
+            "deadline",
+            "cache_miss",
+            "unknown_dispatch",
+            "cancelled"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "variable_name": {
+          "anyOf": [
+            {
+              "enum": [
+                "OPENAI_API_KEY",
+                "OPENAI_API_KEY_FILE",
+                "TYPESAFE_API_KEY",
+                "TYPESAFE_API_KEY_FILE",
+                "ANTHROPIC_API_KEY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Variable Name"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "title": "SafeError",
+      "type": "object"
+    },
+    "ScoreAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "legend": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "maxProperties": 10,
+          "minProperties": 2,
+          "title": "Legend",
+          "type": "object"
+        },
+        "probabilities": {
+          "additionalProperties": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "maxProperties": 10,
+          "minProperties": 2,
+          "title": "Probabilities",
+          "type": "object"
+        },
+        "score": {
+          "minimum": 0,
+          "title": "Score",
+          "type": "number"
+        },
+        "type": {
+          "const": "score",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "score",
+        "legend",
+        "probabilities",
+        "confidence"
+      ],
+      "title": "ScoreAnswer",
+      "type": "object"
+    },
+    "SourceCaptureRef": {
+      "additionalProperties": false,
+      "properties": {
+        "capture_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Capture Id",
+          "type": "string"
+        },
+        "capture_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Capture Sha256",
+          "type": "string"
+        },
+        "cost_usd": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cost Usd"
+        },
+        "first_output_kind": {
+          "enum": [
+            "token",
+            "chunk",
+            "answer",
+            "unavailable"
+          ],
+          "title": "First Output Kind",
+          "type": "string"
+        },
+        "first_output_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Output Ms"
+        },
+        "latency_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Latency Ms"
+        },
+        "model_reported": {
+          "anyOf": [
+            {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Reported"
+        },
+        "model_requested": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Model Requested",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "synthetic",
+            "live"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "price_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Ref"
+        },
+        "request_identity_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Request Identity Sha256",
+          "type": "string"
+        },
+        "source_run_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Source Run Id",
+          "type": "string"
+        },
+        "usage_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Usage Ref"
+        }
+      },
+      "required": [
+        "capture_id",
+        "capture_sha256",
+        "origin",
+        "source_run_id",
+        "request_identity_sha256",
+        "model_requested",
+        "first_output_kind"
+      ],
+      "title": "SourceCaptureRef",
+      "type": "object"
+    },
+    "TypedJudgmentResult": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "additionalProperties": {
+            "discriminator": {
+              "mapping": {
+                "choice": "#/$defs/ChoiceAnswer",
+                "noul": "#/$defs/NoulAnswer",
+                "score": "#/$defs/ScoreAnswer"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/ChoiceAnswer"
+              },
+              {
+                "$ref": "#/$defs/NoulAnswer"
+              },
+              {
+                "$ref": "#/$defs/ScoreAnswer"
+              }
+            ]
+          },
+          "maxProperties": 256,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "title": "Answers",
+          "type": "object"
+        },
+        "model_reported": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Model Reported",
+          "type": "string"
+        },
+        "question_spec_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Question Spec Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "model_reported",
+        "question_spec_sha256",
+        "answers"
+      ],
+      "title": "TypedJudgmentResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "accounting_ref": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Accounting Ref",
+      "type": "string"
+    },
+    "attempt_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9_.:-]+$",
+        "type": "string"
+      },
+      "title": "Attempt Ids",
+      "type": "array"
+    },
+    "current_external_cost_usd": {
+      "anyOf": [
+        {
+          "maxLength": 64,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Current External Cost Usd"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SafeError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "first_output_kind": {
+      "enum": [
+        "token",
+        "chunk",
+        "answer",
+        "unavailable"
+      ],
+      "title": "First Output Kind",
+      "type": "string"
+    },
+    "first_output_ms": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "First Output Ms"
+    },
+    "kind": {
+      "enum": [
+        "generated",
+        "typed"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "latency_ms": {
+      "minimum": 0,
+      "title": "Latency Ms",
+      "type": "number"
+    },
+    "model_reported": {
+      "anyOf": [
+        {
+          "maxLength": 255,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Model Reported"
+    },
+    "model_requested": {
+      "maxLength": 255,
+      "minLength": 1,
+      "title": "Model Requested",
+      "type": "string"
+    },
+    "normalized_usage": {
+      "$ref": "#/$defs/NormalizedUsage"
+    },
+    "origin": {
+      "enum": [
+        "live",
+        "replay",
+        "mock"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "parsed": {
+      "$ref": "#/$defs/JsonValue",
+      "default": null
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "source_capture": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SourceCaptureRef"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "refused",
+        "invalid_output",
+        "provider_error",
+        "unknown",
+        "budget_rejected",
+        "unsupported",
+        "cache_miss",
+        "deadline_exceeded",
+        "cancelled"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "text": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Text"
+    },
+    "typed": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TypedJudgmentResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "usage_raw": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Usage Raw"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "status",
+    "model_requested",
+    "model_reported",
+    "usage_raw",
+    "normalized_usage",
+    "accounting_ref",
+    "attempt_ids",
+    "origin",
+    "source_capture",
+    "latency_ms",
+    "first_output_ms",
+    "first_output_kind",
+    "current_external_cost_usd"
+  ],
+  "title": "Result",
+  "type": "object"
+}

@@ -1,0 +1,27 @@
+name: Offline component and workflow checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      # Canonical S2/S3 bytes have hash pins; never reformat copied source/tests.
+      - run: >-
+          uv run ruff check
+          --extend-exclude 'src/issue_triage/shared/providers/**,src/issue_triage/shared/callledger/**,src/issue_triage/shared/evalkit/**,src/issue_triage/shared/cited/**,src/issue_triage/shared/rulings/**,tests/contracts/consumers/s3/owner/**,tests/contracts/consumers/s3/purpose_v2/**,tests/contracts/consumers/s2/owner/**,tests/contracts/consumers/s5/owner/**,tests/contracts/consumers/s2_rulings/owner/**'
+          src scripts/demo.py tests/contracts tests/store tests/runtime tests/screen tests/ghapp tests/ingest tests/codeindex tests/judges tests/pipeline tests/slice
+      - run: >-
+          uv run ruff format --check
+          --extend-exclude 'src/issue_triage/shared/providers/**,src/issue_triage/shared/callledger/**,src/issue_triage/shared/evalkit/**,src/issue_triage/shared/cited/**,src/issue_triage/shared/rulings/**,tests/contracts/consumers/s3/owner/**,tests/contracts/consumers/s3/purpose_v2/**,tests/contracts/consumers/s2/owner/**,tests/contracts/consumers/s5/owner/**,tests/contracts/consumers/s2_rulings/owner/**'
+          src scripts/demo.py tests/contracts tests/store tests/runtime tests/screen tests/ghapp tests/ingest tests/codeindex tests/judges tests/pipeline tests/slice
+      - run: uv run pytest tests/contracts tests/store tests/runtime tests/screen tests/ghapp tests/ingest tests/codeindex tests/judges tests/pipeline tests/slice
+      - run: uv run python -m issue_triage --offline
+      - run: uv run python scripts/demo.py --offline --state-dir "${{ runner.temp }}/issue-triage-demo"

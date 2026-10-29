@@ -1,0 +1,85 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "byte_length": {
+      "exclusiveMinimum": 0,
+      "title": "Byte Length",
+      "type": "integer"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "decoded_height": {
+      "exclusiveMinimum": 0,
+      "title": "Decoded Height",
+      "type": "integer"
+    },
+    "decoded_width": {
+      "exclusiveMinimum": 0,
+      "title": "Decoded Width",
+      "type": "integer"
+    },
+    "detail": {
+      "enum": [
+        "low",
+        "high",
+        "auto"
+      ],
+      "title": "Detail",
+      "type": "string"
+    },
+    "execution_ref": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Execution Ref",
+      "type": "string"
+    },
+    "media_type": {
+      "enum": [
+        "image/png",
+        "image/jpeg"
+      ],
+      "title": "Media Type",
+      "type": "string"
+    },
+    "rendition_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Rendition Sha256",
+      "type": "string"
+    },
+    "source_generation": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "title": "Source Generation",
+      "type": "string"
+    },
+    "transform_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Transform Sha256",
+      "type": "string"
+    },
+    "type": {
+      "const": "local_image",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "execution_ref",
+    "content_sha256",
+    "media_type",
+    "byte_length",
+    "decoded_width",
+    "decoded_height",
+    "rendition_sha256",
+    "source_generation",
+    "transform_sha256",
+    "detail"
+  ],
+  "title": "ImagePart",
+  "type": "object"
+}

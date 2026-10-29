@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "source_project": "llm-router-eval",
+  "source_commit": "c7a03a8a5aa91a3881782621d8a5f09c6b82520d",
+  "source_tree": "e0aa5796fa163fcbcb5ade87e6a33ed2e645c2e3",
+  "licence": "MIT",
+  "canonical_source_files": 14,
+  "semantics": "Offline public contracts and authored synthetic controls, no actual provider or quality claim",
+  "entries": [
+    {
+      "source_path": "src/llm_router_eval/shared/__init__.py",
+      "destination_path": "src/issue_triage/shared/__init__.py",
+      "source_sha256": "60913c6d12caa4ba9139d870ad493d4a68738580c996662d7ad7b8d71622e1b8",
+      "adapted_sha256": "60913c6d12caa4ba9139d870ad493d4a68738580c996662d7ad7b8d71622e1b8",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/README.md",
+      "destination_path": "src/issue_triage/shared/callledger/README.md",
+      "source_sha256": "bdc63ddb26832750654cdbffc09fca33d46b9e5ef2e0b7b1a34cac4e1cea0c50",
+      "adapted_sha256": "bdc63ddb26832750654cdbffc09fca33d46b9e5ef2e0b7b1a34cac4e1cea0c50",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/__init__.py",
+      "destination_path": "src/issue_triage/shared/callledger/__init__.py",
+      "source_sha256": "0fe1e2b6e2b49e170e5e483d1406b8c36d1ce8e2b446845aad2bb741b7806571",
+      "adapted_sha256": "0fe1e2b6e2b49e170e5e483d1406b8c36d1ce8e2b446845aad2bb741b7806571",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/ledger.py",
+      "destination_path": "src/issue_triage/shared/callledger/ledger.py",
+      "source_sha256": "207ccd4effe633f44863080957bafa4ca80752397e7aca4eafd541ff50eb2a1d",
+      "adapted_sha256": "207ccd4effe633f44863080957bafa4ca80752397e7aca4eafd541ff50eb2a1d",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/models.py",
+      "destination_path": "src/issue_triage/shared/callledger/models.py",
+      "source_sha256": "7274d1eebed5370460d83af6e4187cc74037d0ab600889219423dbcdd81277e7",
+      "adapted_sha256": "7274d1eebed5370460d83af6e4187cc74037d0ab600889219423dbcdd81277e7",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/pricing.py",
+      "destination_path": "src/issue_triage/shared/callledger/pricing.py",
+      "source_sha256": "daf38f487eeb70b48cc4025c54a19eea581a2d5d00084f534d9f2b9a55056c74",
+      "adapted_sha256": "daf38f487eeb70b48cc4025c54a19eea581a2d5d00084f534d9f2b9a55056c74",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/callledger/projection.py",
+      "destination_path": "src/issue_triage/shared/callledger/projection.py",
+      "source_sha256": "5c0194e299b2c58f85e745ac093063dcb89689ea162ba378a37afc48a0f4dc69",
+      "adapted_sha256": "5c0194e299b2c58f85e745ac093063dcb89689ea162ba378a37afc48a0f4dc69",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/__init__.py",
+      "destination_path": "src/issue_triage/shared/providers/__init__.py",
+      "source_sha256": "5294e9e9a55d6f645ba1fae741f467accdf3aae0caf9e9094a46784bff57421f",
+      "adapted_sha256": "5294e9e9a55d6f645ba1fae741f467accdf3aae0caf9e9094a46784bff57421f",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/adapters.py",
+      "destination_path": "src/issue_triage/shared/providers/adapters.py",
+      "source_sha256": "0f04a7f3231c2a22c36541b9cdaeb53214899d4da111f264eab73278847a3023",
+      "adapted_sha256": "0f04a7f3231c2a22c36541b9cdaeb53214899d4da111f264eab73278847a3023",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/captures.py",
+      "destination_path": "src/issue_triage/shared/providers/captures.py",
+      "source_sha256": "0c91934a090d5f1481fd1116c4ee74a073e0cc8b6ee9c1c8d19cacdce2ebde00",
+      "adapted_sha256": "0c91934a090d5f1481fd1116c4ee74a073e0cc8b6ee9c1c8d19cacdce2ebde00",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/controller.py",
+      "destination_path": "src/issue_triage/shared/providers/controller.py",
+      "source_sha256": "7e607e319bafe93354d04571f82e7fae35365e21fec8d5ce393843f4d41366ac",
+      "adapted_sha256": "7e607e319bafe93354d04571f82e7fae35365e21fec8d5ce393843f4d41366ac",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/images.py",
+      "destination_path": "src/issue_triage/shared/providers/images.py",
+      "source_sha256": "d847124ef8dc76461f3257df2586075f7ca9602bebe4a15009c6a48aefa6aa13",
+      "adapted_sha256": "d847124ef8dc76461f3257df2586075f7ca9602bebe4a15009c6a48aefa6aa13",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/models.py",
+      "destination_path": "src/issue_triage/shared/providers/models.py",
+      "source_sha256": "7d00a646f583aec1b77abd8c956f1b0c830726be3c17ce37737ac05841060ea2",
+      "adapted_sha256": "7d00a646f583aec1b77abd8c956f1b0c830726be3c17ce37737ac05841060ea2",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "src/llm_router_eval/shared/providers/schema.py",
+      "destination_path": "src/issue_triage/shared/providers/schema.py",
+      "source_sha256": "a0c4a84b14a95d2834a150e8fa16224ccec03e1a84325b359b92868a61613391",
+      "adapted_sha256": "a0c4a84b14a95d2834a150e8fa16224ccec03e1a84325b359b92868a61613391",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "LICENSE",
+      "destination_path": "src/issue_triage/shared/LICENSE.S3",
+      "source_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adapted_sha256": "431665582156c442d0448d1f5cd2e45663ab96e6cf098711ffa58c4bb01b69e6",
+      "adaptation": "none; exact MIT notice"
+    },
+    {
+      "source_path": "docs/INTERFACE.md",
+      "destination_path": "docs/vendor/s3/INTERFACE.md",
+      "source_sha256": "52f17a1b1e31d3ecee30d03a8feab6884e71d4ca762f67251f7be93b76e7516f",
+      "adapted_sha256": "52f17a1b1e31d3ecee30d03a8feab6884e71d4ca762f67251f7be93b76e7516f",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/LIMITATIONS.md",
+      "destination_path": "docs/vendor/s3/LIMITATIONS.md",
+      "source_sha256": "e4ee289a4d9332cf87ec7826a1941e7b74f71b6c890a3d27b8507995307e24f2",
+      "adapted_sha256": "e4ee289a4d9332cf87ec7826a1941e7b74f71b6c890a3d27b8507995307e24f2",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/provider-contracts.md",
+      "destination_path": "docs/vendor/s3/provider-contracts.md",
+      "source_sha256": "23e3560e3b4cf108e8029217a6fc012ec40d969429fc272f356f5d0badd0a71a",
+      "adapted_sha256": "23e3560e3b4cf108e8029217a6fc012ec40d969429fc272f356f5d0badd0a71a",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/allocation.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/allocation.schema.json",
+      "source_sha256": "5a00f2b0002f56a0e0c6eddc7174f27303dc2fd1feef9eb232a98c33fa42dab4",
+      "adapted_sha256": "5a00f2b0002f56a0e0c6eddc7174f27303dc2fd1feef9eb232a98c33fa42dab4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/billing-policy.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/billing-policy.schema.json",
+      "source_sha256": "48c2b0b75d6b2e8c004cdab781e4e230792175948ebe40c2e4f9c8f18720d483",
+      "adapted_sha256": "48c2b0b75d6b2e8c004cdab781e4e230792175948ebe40c2e4f9c8f18720d483",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/budget-authority.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/budget-authority.schema.json",
+      "source_sha256": "f514326beda95a6de71084ef67f117a28dae4302df27b7f72f757808b2f2cdd9",
+      "adapted_sha256": "f514326beda95a6de71084ef67f117a28dae4302df27b7f72f757808b2f2cdd9",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/call-context.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/call-context.schema.json",
+      "source_sha256": "bd5ea2932394d21aed2384d6d3559c672cd82f7458d13ba5bdff218a53482d0b",
+      "adapted_sha256": "bd5ea2932394d21aed2384d6d3559c672cd82f7458d13ba5bdff218a53482d0b",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/capabilities.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/capabilities.schema.json",
+      "source_sha256": "8f07c6595016d591a23c010a77699c61e77aac9bf45efb863d9f8cf662c2ef02",
+      "adapted_sha256": "8f07c6595016d591a23c010a77699c61e77aac9bf45efb863d9f8cf662c2ef02",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/cost-observation.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/cost-observation.schema.json",
+      "source_sha256": "e2c2ac6bc804caeb524e388951684ecec5f4bc9de7628dfabd739468018aeb60",
+      "adapted_sha256": "e2c2ac6bc804caeb524e388951684ecec5f4bc9de7628dfabd739468018aeb60",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/execution-envelope.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/execution-envelope.schema.json",
+      "source_sha256": "9213ae4ea207c5b38bdacab28281e29ab785beb1a8413cbd9658e466d2cc57f4",
+      "adapted_sha256": "9213ae4ea207c5b38bdacab28281e29ab785beb1a8413cbd9658e466d2cc57f4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/funding-declaration.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/funding-declaration.schema.json",
+      "source_sha256": "badc0575ac98f301300d26a6fe7f112cd6a87958858007d151afe483df895f96",
+      "adapted_sha256": "badc0575ac98f301300d26a6fe7f112cd6a87958858007d151afe483df895f96",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/generate-request.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/generate-request.schema.json",
+      "source_sha256": "e21af31fb0a59ab2f7dc962910416477bee5a8126f08d967d9bba20c4b484641",
+      "adapted_sha256": "e21af31fb0a59ab2f7dc962910416477bee5a8126f08d967d9bba20c4b484641",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/image-part.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/image-part.schema.json",
+      "source_sha256": "b4e8131099cac1cac4d81e064a59ee2d1ff30579accc5d93a67501f05f3be8a4",
+      "adapted_sha256": "b4e8131099cac1cac4d81e064a59ee2d1ff30579accc5d93a67501f05f3be8a4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/limits.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/limits.schema.json",
+      "source_sha256": "756f32c1a6506190e583c05c1f308958744cd1ddec832a8cf0a684d3c3a63cfa",
+      "adapted_sha256": "756f32c1a6506190e583c05c1f308958744cd1ddec832a8cf0a684d3c3a63cfa",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/metadata-record.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/metadata-record.schema.json",
+      "source_sha256": "58f5317609cb5c603ba4ee3f540cd7365dd5a589f97a4d6e3f8a599c36d47988",
+      "adapted_sha256": "58f5317609cb5c603ba4ee3f540cd7365dd5a589f97a4d6e3f8a599c36d47988",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/non-model-span.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/non-model-span.schema.json",
+      "source_sha256": "7e6af9f0bd414d199a544867a2e29585e07b4e58299d5c74e9c60220ceecab20",
+      "adapted_sha256": "7e6af9f0bd414d199a544867a2e29585e07b4e58299d5c74e9c60220ceecab20",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/normalized-usage.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/normalized-usage.schema.json",
+      "source_sha256": "c5fd7231623fc982faa04a8d18083b2c6b33a7e3d4e561696bca2cbcf5beca46",
+      "adapted_sha256": "c5fd7231623fc982faa04a8d18083b2c6b33a7e3d4e561696bca2cbcf5beca46",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/operation-plan.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/operation-plan.schema.json",
+      "source_sha256": "ac490890f5f69d4f3abe29be618c7ea9810cf218465d4924834e552f6e5389a2",
+      "adapted_sha256": "ac490890f5f69d4f3abe29be618c7ea9810cf218465d4924834e552f6e5389a2",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/result.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/result.schema.json",
+      "source_sha256": "bb97564c9664f42af979e54063a573b21a35c73c6511802dd3d08bdd84ee6fe5",
+      "adapted_sha256": "bb97564c9664f42af979e54063a573b21a35c73c6511802dd3d08bdd84ee6fe5",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/typed-request.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/typed-request.schema.json",
+      "source_sha256": "73a29c169b7f827aa72b65437ea49423dcb21a8d459c15c5133fbad87630ed5e",
+      "adapted_sha256": "73a29c169b7f827aa72b65437ea49423dcb21a8d459c15c5133fbad87630ed5e",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/typed-result.schema.json",
+      "destination_path": "docs/vendor/s3/schemas/typed-result.schema.json",
+      "source_sha256": "2f7cd1368f79c02e13bc6d7dfab1897217be43bc6ad11cbcfb0d998786342241",
+      "adapted_sha256": "2f7cd1368f79c02e13bc6d7dfab1897217be43bc6ad11cbcfb0d998786342241",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/callledger/conftest.py",
+      "source_sha256": "28e43e5bf02fee49f0f6b33b17f80ba21d0223c6cd16de03bcb5ee2c3e605c1e",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/conftest.py",
+      "adapted_sha256": "d67426d55bfd278e2af767192f6be9ecc225d0b7ddae3104d9e250255e5c39b1",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/fixtures/wp02-schema-v1-case.json",
+      "source_sha256": "49313d66b9f4a5f27e847fd2058c2aad7ecd66e1020283b6c7582a6ef1a5c54d",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/fixtures/wp02-schema-v1-case.json",
+      "adapted_sha256": "49313d66b9f4a5f27e847fd2058c2aad7ecd66e1020283b6c7582a6ef1a5c54d",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/callledger/fixtures/wp02-schema-v1.sql",
+      "source_sha256": "d0f223301262223bb84e977de5da3394f7f4f575c19491ad6d3031102a2a3656",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/fixtures/wp02-schema-v1.sql",
+      "adapted_sha256": "d0f223301262223bb84e977de5da3394f7f4f575c19491ad6d3031102a2a3656",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/callledger/test_accounting.py",
+      "source_sha256": "74495852b116984ea04e74ada5cf44a59507e494373ebe2c62bc5583f28dea62",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_accounting.py",
+      "adapted_sha256": "296c2e39094ec74fde3f9cb9ae26150f8e105ce31f434a78e3db57a2d819354e",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/test_boundaries.py",
+      "source_sha256": "f9d5ee02eb8cb1b144c3c694b34bccde2889cf20b83dbaf82eec9d9e7f58ee07",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_boundaries.py",
+      "adapted_sha256": "d193d49d59bd7823eedc560190df0e5943e2dff21089a43e4160405b75d1e1ba",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/test_caller_limits.py",
+      "source_sha256": "11eb58ee756469c6f46f4e14be3c119403c2687d014d772e785f1c4b05168947",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_caller_limits.py",
+      "adapted_sha256": "20fef48551dce5f815404782cad27985a417161f0c132c76a717c0297f8144d8",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/test_durability.py",
+      "source_sha256": "1755613e99dd303cd190044e1ac77a4f354702284ce950eed36ff4c699afb6a0",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_durability.py",
+      "adapted_sha256": "9c0e176f61cd318dc25e31b0acf77eee5d7d8c9e49103324ac643bc1c38e2e5e",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/test_privacy.py",
+      "source_sha256": "c47ab433a9889945fb634b9f634e7c41681d5cf0e11b8983b88e051f0a12f152",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_privacy.py",
+      "adapted_sha256": "1818887bc81765d3eb4f0b076e3a5202c22cbad31390b1d163203678227f093d",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/callledger/test_v1_migration.py",
+      "source_sha256": "4cf04018b8acf42ffd9c6f1163acb7e5dfaf730b8780a1b8a89a09c628a019ac",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/callledger/test_v1_migration.py",
+      "adapted_sha256": "323ca346623d6e340f2f04b14aba0f24c7a5b5d5bb8dbaa56981ce978e9e4520",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/conftest.py",
+      "source_sha256": "6eabce3377c93d21aa91129b3d6f2e9b8f3e5844db657d60f267f6565f0e24bf",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/conftest.py",
+      "adapted_sha256": "5d06d67af2db3e6ab5979ee9d7bca31911afafeae75dcb848986ecb137a512fe",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/test_accounting_models.py",
+      "source_sha256": "8cb644a365c514722bfc9d8905b1366294751ffb737f3e27af0bfe9eafaab951",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/test_accounting_models.py",
+      "adapted_sha256": "e5756fd26fed7aaaa0e76b3be2439fa49e6a23fd3e5e1468ce6234d47b06ffc3",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/test_context_identity.py",
+      "source_sha256": "288d43073eeb74133b2477fb36cd0aec22f651ea9d11434cd948bea52acf45be",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/test_context_identity.py",
+      "adapted_sha256": "0645b2d912d723d9a56eb9e31cac20419ee7740e8feed869937ec59adaf2042b",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/test_result_provenance.py",
+      "source_sha256": "692a3c10d5f6798045ce84cb85ca6f097fb716059121ee0f7a878315e0075c60",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/test_result_provenance.py",
+      "adapted_sha256": "d7d60d1e12da8de017134edb2e7fe21483ef6b8b68643657330c0a96a5583721",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/test_results_and_copy.py",
+      "source_sha256": "046b4e0400339ec151df94b4a7afcac684533d8557094222c4b9af1631c4603c",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/test_results_and_copy.py",
+      "adapted_sha256": "c3a2ea34afa0603b476187445fd1d5b57f65ee45ae5c284e9c657b0c51698f81",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/contracts/test_typed_wire.py",
+      "source_sha256": "94ea8bc5cec8bde47a6a7fbc8c748de8c52dadf5b30a7c067bfef6a7239dac59",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/contracts/test_typed_wire.py",
+      "adapted_sha256": "20dfb4ee71de651a866aa071a22e7a63fcec2970dce0aba86be1252151ff92f3",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/prices/test_pricing.py",
+      "source_sha256": "0cb5d1348a8220513f5943af474416370a6e986a540e3376b25df38ecb2d241a",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/prices/test_pricing.py",
+      "adapted_sha256": "c0c86af47e4b7ec59fbac1a94a9877417901dea8a72dc8f25cfe8994ba5faed4",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/provider_payloads/foundation-cases.v1.json",
+      "source_sha256": "516b49c863b27130b9a18ee3e058e5738d3c4286d6c4753abb74a03ad05fbf42",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/provider_payloads/foundation-cases.v1.json",
+      "adapted_sha256": "516b49c863b27130b9a18ee3e058e5738d3c4286d6c4753abb74a03ad05fbf42",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/provider_payloads/README.md",
+      "source_sha256": "e90582e778189592456155d6c3a8951a7b31e2f525039a0a1e3d35be5c13700f",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/provider_payloads/README.md",
+      "adapted_sha256": "e90582e778189592456155d6c3a8951a7b31e2f525039a0a1e3d35be5c13700f",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "tests/providers/conftest.py",
+      "source_sha256": "b9dd0c50f8c8d07a4fc5c4e8e3c7b6740ef6ea405bf53dcee31ddbff26f64125",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/conftest.py",
+      "adapted_sha256": "a77e90550cd8e2eda604670c309fffc02981626716339e17407ec6ad4ef6c64a",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/providers/test_controller.py",
+      "source_sha256": "0892e7e455a32253d057c70e4b099c62c6a901f586df7728f8d35b147f90e609",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/test_controller.py",
+      "adapted_sha256": "43d98d91e68b7b7d9c083afee625f04682be61b32b784e3939ad1acd13ee9042",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/providers/test_foundation_cases.py",
+      "source_sha256": "7eecdff85bb4be9d033ade622931a6a3bdce0ea5154cc4302031263973705add",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/test_foundation_cases.py",
+      "adapted_sha256": "88adc213f2f7bc43228ff2d5d590cb3ce68b6cd9f184cf0b65acc02f6a37e112",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/providers/test_images.py",
+      "source_sha256": "1e14384e7199bec5842974b2b696ceefe8adc9c69331913c3bcf0028a3cf731a",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/test_images.py",
+      "adapted_sha256": "69d10d3fbd184b57deb16fe1ddd43276ef67fa9fe7b545e40569f0a1ea7e6878",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/providers/test_payloads.py",
+      "source_sha256": "68134acb018c237337d10194f53739d412e4ed4dfc6aa45d4a97380625030b86",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/test_payloads.py",
+      "adapted_sha256": "7e0677f007b5ed54e4920193d55b9c4332a49f7f123c920ff205c144eb4b98bb",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "tests/providers/test_provider_privacy.py",
+      "source_sha256": "140d38f72198402bb20c96f61a026d67b486ec675c54b5a886156adf036e575d",
+      "destination_path": "tests/contracts/consumers/s3/owner/tests/providers/test_provider_privacy.py",
+      "adapted_sha256": "3c97841ac16f7f07a6ce006561b0d5a0f217923ca983bf7268723525eb0235fd",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "scripts/generate_schemas.py",
+      "source_sha256": "5309750f2f171146461a3a1bd66e3a39d442b6e78867e85fe86bc87f56c2adfc",
+      "destination_path": "tests/contracts/consumers/s3/owner/scripts/generate_schemas.py",
+      "adapted_sha256": "41e6d391b475417c0bd4072d89fe62e4bdb1d14ea19fa3c6c2e65ea209ad846d",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "scripts/update_prices.py",
+      "source_sha256": "0cac5ca6afa4b6e4af2d21176dada595fcfbce2b33e92ef4b35408b036eeca0a",
+      "destination_path": "tests/contracts/consumers/s3/owner/scripts/update_prices.py",
+      "adapted_sha256": "abded9791dd2fc77dd5d8a08ee0f9e55c5e39e988ae8a6a249d9880966f32c46",
+      "adaptation": "import namespace only; owner namespace denial strings unchanged"
+    },
+    {
+      "source_path": "prices/synthetic-unit-v1.json",
+      "source_sha256": "9cec5acd6b2e2de720df07b90ddb0cdd049866146a2f33c7577a7dd7f345b91f",
+      "destination_path": "tests/contracts/consumers/s3/owner/prices/synthetic-unit-v1.json",
+      "adapted_sha256": "9cec5acd6b2e2de720df07b90ddb0cdd049866146a2f33c7577a7dd7f345b91f",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/allocation.schema.json",
+      "source_sha256": "5a00f2b0002f56a0e0c6eddc7174f27303dc2fd1feef9eb232a98c33fa42dab4",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/allocation.schema.json",
+      "adapted_sha256": "5a00f2b0002f56a0e0c6eddc7174f27303dc2fd1feef9eb232a98c33fa42dab4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/billing-policy.schema.json",
+      "source_sha256": "48c2b0b75d6b2e8c004cdab781e4e230792175948ebe40c2e4f9c8f18720d483",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/billing-policy.schema.json",
+      "adapted_sha256": "48c2b0b75d6b2e8c004cdab781e4e230792175948ebe40c2e4f9c8f18720d483",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/budget-authority.schema.json",
+      "source_sha256": "f514326beda95a6de71084ef67f117a28dae4302df27b7f72f757808b2f2cdd9",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/budget-authority.schema.json",
+      "adapted_sha256": "f514326beda95a6de71084ef67f117a28dae4302df27b7f72f757808b2f2cdd9",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/call-context.schema.json",
+      "source_sha256": "bd5ea2932394d21aed2384d6d3559c672cd82f7458d13ba5bdff218a53482d0b",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/call-context.schema.json",
+      "adapted_sha256": "bd5ea2932394d21aed2384d6d3559c672cd82f7458d13ba5bdff218a53482d0b",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/capabilities.schema.json",
+      "source_sha256": "8f07c6595016d591a23c010a77699c61e77aac9bf45efb863d9f8cf662c2ef02",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/capabilities.schema.json",
+      "adapted_sha256": "8f07c6595016d591a23c010a77699c61e77aac9bf45efb863d9f8cf662c2ef02",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/cost-observation.schema.json",
+      "source_sha256": "e2c2ac6bc804caeb524e388951684ecec5f4bc9de7628dfabd739468018aeb60",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/cost-observation.schema.json",
+      "adapted_sha256": "e2c2ac6bc804caeb524e388951684ecec5f4bc9de7628dfabd739468018aeb60",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/execution-envelope.schema.json",
+      "source_sha256": "9213ae4ea207c5b38bdacab28281e29ab785beb1a8413cbd9658e466d2cc57f4",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/execution-envelope.schema.json",
+      "adapted_sha256": "9213ae4ea207c5b38bdacab28281e29ab785beb1a8413cbd9658e466d2cc57f4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/funding-declaration.schema.json",
+      "source_sha256": "badc0575ac98f301300d26a6fe7f112cd6a87958858007d151afe483df895f96",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/funding-declaration.schema.json",
+      "adapted_sha256": "badc0575ac98f301300d26a6fe7f112cd6a87958858007d151afe483df895f96",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/generate-request.schema.json",
+      "source_sha256": "e21af31fb0a59ab2f7dc962910416477bee5a8126f08d967d9bba20c4b484641",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/generate-request.schema.json",
+      "adapted_sha256": "e21af31fb0a59ab2f7dc962910416477bee5a8126f08d967d9bba20c4b484641",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/image-part.schema.json",
+      "source_sha256": "b4e8131099cac1cac4d81e064a59ee2d1ff30579accc5d93a67501f05f3be8a4",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/image-part.schema.json",
+      "adapted_sha256": "b4e8131099cac1cac4d81e064a59ee2d1ff30579accc5d93a67501f05f3be8a4",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/limits.schema.json",
+      "source_sha256": "756f32c1a6506190e583c05c1f308958744cd1ddec832a8cf0a684d3c3a63cfa",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/limits.schema.json",
+      "adapted_sha256": "756f32c1a6506190e583c05c1f308958744cd1ddec832a8cf0a684d3c3a63cfa",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/metadata-record.schema.json",
+      "source_sha256": "58f5317609cb5c603ba4ee3f540cd7365dd5a589f97a4d6e3f8a599c36d47988",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/metadata-record.schema.json",
+      "adapted_sha256": "58f5317609cb5c603ba4ee3f540cd7365dd5a589f97a4d6e3f8a599c36d47988",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/non-model-span.schema.json",
+      "source_sha256": "7e6af9f0bd414d199a544867a2e29585e07b4e58299d5c74e9c60220ceecab20",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/non-model-span.schema.json",
+      "adapted_sha256": "7e6af9f0bd414d199a544867a2e29585e07b4e58299d5c74e9c60220ceecab20",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/normalized-usage.schema.json",
+      "source_sha256": "c5fd7231623fc982faa04a8d18083b2c6b33a7e3d4e561696bca2cbcf5beca46",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/normalized-usage.schema.json",
+      "adapted_sha256": "c5fd7231623fc982faa04a8d18083b2c6b33a7e3d4e561696bca2cbcf5beca46",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/operation-plan.schema.json",
+      "source_sha256": "ac490890f5f69d4f3abe29be618c7ea9810cf218465d4924834e552f6e5389a2",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/operation-plan.schema.json",
+      "adapted_sha256": "ac490890f5f69d4f3abe29be618c7ea9810cf218465d4924834e552f6e5389a2",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/result.schema.json",
+      "source_sha256": "bb97564c9664f42af979e54063a573b21a35c73c6511802dd3d08bdd84ee6fe5",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/result.schema.json",
+      "adapted_sha256": "bb97564c9664f42af979e54063a573b21a35c73c6511802dd3d08bdd84ee6fe5",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/typed-request.schema.json",
+      "source_sha256": "73a29c169b7f827aa72b65437ea49423dcb21a8d459c15c5133fbad87630ed5e",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/typed-request.schema.json",
+      "adapted_sha256": "73a29c169b7f827aa72b65437ea49423dcb21a8d459c15c5133fbad87630ed5e",
+      "adaptation": "none; exact committed Git blob"
+    },
+    {
+      "source_path": "docs/schemas/typed-result.schema.json",
+      "source_sha256": "2f7cd1368f79c02e13bc6d7dfab1897217be43bc6ad11cbcfb0d998786342241",
+      "destination_path": "tests/contracts/consumers/s3/owner/docs/schemas/typed-result.schema.json",
+      "adapted_sha256": "2f7cd1368f79c02e13bc6d7dfab1897217be43bc6ad11cbcfb0d998786342241",
+      "adaptation": "none; exact committed Git blob"
+    }
+  ]
+}

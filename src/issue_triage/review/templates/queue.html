@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Review queue{% endblock %}
+{% block content %}<p class="eyebrow">Workspace</p><h1>Review queue</h1><p>Captured fixture work, with its durable processing status.</p>
+<section class="card"><table><thead><tr><th>Issue</th><th>Job</th><th>Result</th><th>Current state</th></tr></thead><tbody>
+{% for job in jobs %}<tr><td><a href="/issue/{{ job.issue_key }}">{{ job.issue_key }}</a></td><td>{{ job.status }}</td>
+<td>{{ job.result_code or 'Pending' }}</td><td>{{ job.issue_state }}</td></tr>{% else %}<tr><td colspan="4">No fixture jobs yet. Import a SHA-pinned bundle with the local CLI.</td></tr>{% endfor %}
+</tbody></table></section>{% endblock %}

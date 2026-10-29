@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Issue triage{% endblock %} · Local review</title>
+<link rel="stylesheet" href="/style.css"></head>
+<body><header><a class="brand" href="/">Issue triage</a><span class="badge">Local rehearsal</span>
+{% if logout is defined %}<form action="/logout" method="post">
+<input type="hidden" name="payload" value="{{ logout.payload }}">
+<input type="hidden" name="seal" value="{{ logout.seal }}"><button class="quiet">Sign out</button></form>{% endif %}
+</header><main><aside class="notice">Provisional review · No Human authority · Remote apply unavailable</aside>
+{% block content %}{% endblock %}</main><footer>Fixture inventory → pinned evidence → local rules → provisional review → zero-write preview</footer></body>
+</html>
